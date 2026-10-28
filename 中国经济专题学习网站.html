@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>中国经济专题 · 六讲学习网站</title>
+<meta name="description" content="据北京大学国家发展研究院《中国经济专题》（2026年秋季学期，李力行）第一至第六讲课件整理的学习网站：关键概念加粗并附定义，每个现象配生动实例。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23A8321F'/%3E%3Ctext x='32' y='44' font-size='38' font-family='serif' fill='%23F7F2E8' text-anchor='middle'%3E%E7%BB%8F%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+/* ================= 设计令牌 ================= */
+:root{
+  --ink:#24241F;          /* 墨 */
+  --ink-2:#3C3B33;
+  --paper:#F7F2E8;        /* 宣纸 */
+  --paper-deep:#EFE6D2;   /* 深纸(卡片) */
+  --paper-2:#FAF6EE;
+  --vermilion:#A8321F;    /* 朱砂 */
+  --vermilion-soft:#F4E3DC;
+  --blue:#34566B;         /* 黛蓝 */
+  --blue-soft:#E6EDF1;
+  --green:#4A6B55;        /* 松绿 */
+  --green-soft:#E7EEE9;
+  --gold:#9C7A2C;         /* 赭金 */
+  --gold-soft:#F1E9D5;
+  --purple:#5A4A63;       /* 玄紫 */
+  --purple-soft:#ECE7EE;
+  --teal:#2E6E6E;         /* 青绿 */
+  --teal-soft:#E0ECEC;
+  --gray:#6E6A5E;
+  --line:#D9CFB8;
+  --dark:#1E211D;         /* 玄墨(封面/页脚) */
+  --dark-2:#292B25;
+  --serif:"Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased}
+::selection{background:var(--vermilion);color:var(--paper)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+/* ================= 布局骨架 ================= */
+#sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:var(--dark);color:#D9D3C2;z-index:50;display:flex;flex-direction:column;transform:translateX(-100%);transition:transform .25s ease}
+#sidebar.open{transform:none}
+#topbar{position:sticky;top:0;z-index:40;background:rgba(247,242,232,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:10px 14px}
+#topbar .seal{width:30px;height:30px;flex:0 0 30px}
+#topbar .t-title{font-family:var(--serif);font-weight:700;font-size:15px;letter-spacing:.06em}
+#burger{width:40px;height:40px;border:1px solid var(--line);background:var(--paper);border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 40px}
+#main{max-width:1180px;margin:0 auto;padding:0 16px 60px}
+/* 侧栏 */
+#sidebar .brand{display:flex;align-items:center;gap:10px;padding:22px 20px 16px;border-bottom:1px solid rgba(217,207,184,.18)}
+#sidebar .brand svg{width:34px;height:34px;flex:0 0 34px}
+#sidebar .brand b{font-family:var(--serif);font-size:16px;letter-spacing:.1em;color:#F1EBDD}
+#sidebar nav{flex:1;overflow:auto;padding:12px 0}
+#sidebar nav a{display:flex;align-items:center;gap:10px;padding:10px 20px;color:#B9B2A0;font-size:14px;border-left:3px solid transparent}
+#sidebar nav a .num{font-family:var(--serif);font-weight:700;font-size:12px;color:#8A8370;width:22px}
+#sidebar nav a:hover{background:rgba(247,242,232,.06);color:#F1EBDD}
+#sidebar nav a.active{border-left-color:var(--vermilion);color:#F7F2E8;background:rgba(168,50,31,.14)}
+#sidebar nav a.active .num{color:#E08B7A}
+#sidebar .foot{padding:14px 20px;font-size:11px;color:#8A8370;border-top:1px solid rgba(217,207,184,.18);line-height:1.6}
+#mask{position:fixed;inset:0;background:rgba(30,33,29,.45);z-index:45;opacity:0;pointer-events:none;transition:opacity .2s}
+#mask.show{opacity:1;pointer-events:auto}
+/* ================= 视图 ================= */
+.view{display:none}
+.view.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* ================= 通用排版 ================= */
+.wrap{max-width:820px;margin:0 auto}
+.lead{font-size:17px;color:var(--ink-2)}
+p{margin:0 0 14px}
+b,strong{font-weight:600}
+h2.sec{font-family:var(--serif);font-weight:700;font-size:26px;line-height:1.4;margin:46px 0 6px;display:flex;align-items:baseline;gap:12px}
+h2.sec .no{font-size:15px;color:var(--vermilion);letter-spacing:.08em;font-weight:700;flex:0 0 auto}
+h3{font-family:var(--serif);font-weight:600;font-size:19px;margin:26px 0 8px;line-height:1.5}
+.sec-rule{width:56px;height:3px;background:var(--vermilion);margin:0 0 14px}
+/* 学术概念术语：加粗+点下划线，点击弹定义 */
+.term{font-weight:600;cursor:help;border-bottom:1px dotted var(--vermilion);padding:0 1px;transition:background .15s}
+.term:hover,.term:focus-visible{background:var(--vermilion-soft);outline:none}
+#pop{position:fixed;z-index:80;max-width:320px;background:var(--dark);color:#EFE8D6;border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.65;box-shadow:0 8px 30px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .15s}
+#pop.show{opacity:1;pointer-events:auto}
+#pop .p-t{font-family:var(--serif);font-weight:700;color:#E08B7A;display:block;margin-bottom:4px;font-size:14px}
+#pop .p-b{display:block}
+#pop::after{content:"";position:absolute;top:-6px;left:22px;border:6px solid transparent;border-bottom-color:var(--dark);border-top:none}
+/* ================= 信息卡 ================= */
+.box{border-radius:10px;padding:14px 16px;margin:14px 0;position:relative;font-size:15px;line-height:1.8;border-left:4px solid}
+.box .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.18em;margin-bottom:6px;border-radius:3px;padding:1px 8px;color:#fff}
+.box p:last-child{margin-bottom:0}
+.def{background:var(--paper-2);border-color:var(--blue);box-shadow:0 1px 0 rgba(52,86,107,.12)}
+.def .tag{background:var(--blue)}
+.ex{background:var(--paper-2);border-color:var(--vermilion)}
+.ex .tag{background:var(--vermilion)}
+.ana{background:var(--gold-soft);border-color:var(--gold)}
+.ana .tag{background:var(--gold)}
+.data{background:var(--blue-soft);border-color:var(--blue)}
+.data .tag{background:var(--blue)}
+.quote{background:var(--paper-2);border-color:var(--gray);font-family:var(--serif)}
+.quote .tag{background:var(--gray)}
+.quote em{display:block;font-style:normal;text-align:right;font-size:13px;color:var(--gray);margin-top:6px}
+/* ================= 时间轴 ================= */
+.tl{list-style:none;margin:16px 0 6px;padding:0}
+.tl li{position:relative;padding:0 0 18px 26px;border-left:2px solid var(--line)}
+.tl li::before{content:"";position:absolute;left:-5px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--vermilion)}
+.tl li .yr{font-family:var(--serif);font-weight:700;color:var(--vermilion);font-size:14px;display:block}
+.tl li .ev{display:block;font-size:15px}
+.tl li .note{display:block;font-size:13px;color:var(--gray);margin-top:2px}
+/* ================= 表格 ================= */
+.tbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;table-layout:fixed}
+.tbl caption{caption-side:top;text-align:left;font-family:var(--serif);font-weight:600;font-size:14px;color:var(--gray);padding-bottom:6px}
+.tbl th{background:var(--dark);color:#EFE8D6;font-weight:500;padding:8px 10px;text-align:left;font-size:13px}
+.tbl td{border-bottom:1px solid var(--line);padding:7px 10px}
+.tbl tr:nth-child(even) td{background:rgba(217,207,184,.18)}
+.tbl td.hl{color:var(--vermilion);font-weight:600}
+/* ================= 图表 ================= */
+.chart{width:100%;height:340px;margin:14px 0}
+.chart-sm{height:280px}
+.chart-note{font-size:12px;color:var(--gray);margin:-6px 0 16px;line-height:1.6}
+/* ================= 统计条 ================= */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0}
+.stat{background:var(--dark);color:#EFE8D6;border-radius:10px;padding:14px 14px 12px}
+.stat .v{font-family:var(--serif);font-weight:900;font-size:26px;color:#E08B7A;line-height:1.1}
+.stat .l{font-size:12px;color:#B9B2A0;margin-top:4px;line-height:1.5}
+/* ================= 章封面 ================= */
+.chcov{border-radius:14px;overflow:hidden;background:var(--dark);color:#EFE8D6;padding:34px 26px 26px;margin:0 0 26px;position:relative}
+.chcov::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(224,139,122,.22),transparent 70%)}
+.chcov .ch-no{font-family:var(--serif);font-weight:900;font-size:44px;color:var(--vermilion);letter-spacing:.02em;line-height:1}
+.chcov h1{font-family:var(--serif);font-weight:900;font-size:30px;line-height:1.3;margin:10px 0 10px}
+.chcov .ch-sub{font-size:15px;color:#C9C2AE;max-width:640px;line-height:1.8}
+.chcov .ch-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chcov .ch-tags span{font-size:12px;border:1px solid rgba(217,207,184,.35);color:#C9C2AE;border-radius:20px;padding:2px 10px}
+/* ================= 章尾导航 ================= */
+.chnav{display:flex;justify-content:space-between;gap:12px;margin:44px 0 0;padding-top:20px;border-top:1px solid var(--line)}
+.chnav a{background:var(--paper-2);border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-size:14px;flex:1;max-width:48%}
+.chnav a:hover{border-color:var(--vermilion);color:var(--vermilion)}
+.chnav a i{display:block;font-style:normal;font-size:11px;color:var(--gray);letter-spacing:.15em}
+/* ================= 首页 ================= */
+.hero{background:var(--dark);color:#EFE8D6;border-radius:0 0 24px 24px;padding:56px 22px 40px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 15% 10%,rgba(168,50,31,.28),transparent 45%),radial-gradient(ellipse at 85% 85%,rgba(52,86,107,.25),transparent 50%)}
+.hero>*{position:relative;z-index:1}
+.hero .seal{width:56px;height:56px;margin-bottom:18px;filter:drop-shadow(0 4px 14px rgba(0,0,0,.4))}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:40px;letter-spacing:.08em;line-height:1.25}
+.hero .sub{font-size:15px;color:#C9C2AE;margin-top:12px;max-width:640px;line-height:1.9}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.hero .meta span{font-size:12px;border:1px solid rgba(217,207,184,.3);border-radius:20px;padding:3px 12px;color:#D9D3C2}
+.flow{margin:26px 0 8px;display:grid;grid-template-columns:1fr;gap:8px}
+.flow .node{background:var(--dark-2);border:1px solid rgba(217,207,184,.2);border-radius:10px;padding:12px 14px;font-size:14px;position:relative}
+.flow .node b{font-family:var(--serif);color:#E08B7A;font-size:15px;display:block;margin-bottom:2px}
+.flow .node span{color:#B9B2A0;font-size:13px}
+.flow .arrow{text-align:center;color:#8A8370;font-size:16px;line-height:1}
+.cards{display:grid;grid-template-columns:1fr;gap:12px;margin:22px 0}
+.card{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:18px;cursor:pointer;position:relative;transition:transform .15s ease,box-shadow .15s ease;overflow:hidden}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(36,36,31,.1)}
+.card::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--cc,var(--vermilion))}
+.card .no{font-family:var(--serif);font-weight:700;color:var(--cc,var(--vermilion));font-size:13px;letter-spacing:.1em}
+.card h3{font-size:18px;margin:6px 0 4px;font-weight:700}
+.card p{font-size:13px;color:var(--gray);margin:0;line-height:1.7}
+.sect{padding:34px 0 6px}
+.sect h2{font-family:var(--serif);font-weight:700;font-size:24px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sect h2::before{content:"";width:6px;height:22px;background:var(--vermilion);border-radius:2px}
+.sect h2 small{font-size:13px;font-weight:400;color:var(--gray);letter-spacing:.06em}
+.prl{list-style:none;margin:0;padding:0;counter-reset:prl}
+.prl>li{position:relative;padding:14px 16px 14px 58px;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;background:var(--paper-2)}
+.prl>li::before{counter-increment:prl;content:counter(prl,decimal-leading-zero);position:absolute;left:14px;top:14px;font-family:var(--serif);font-weight:700;color:var(--vermilion);font-size:14px}
+.prl>li b{display:block;font-size:15px;margin-bottom:2px}
+.prl>li span{font-size:14px;color:var(--ink-2)}
+details.qa{border:1px solid var(--line);border-radius:10px;margin:10px 0;background:var(--paper-2)}
+details.qa summary{cursor:pointer;padding:12px 16px;font-weight:600;font-size:15px;list-style:none;position:relative}
+details.qa summary::after{content:"＋";position:absolute;right:14px;color:var(--vermilion);font-weight:700}
+details.qa[open] summary::after{content:"－"}
+details.qa .inner{padding:4px 18px 16px;font-size:14px}
+details.qa ol{padding-left:20px}
+details.qa li{margin-bottom:6px}
+/* ================= 页脚 ================= */
+footer{background:var(--dark);color:#B9B2A0;margin-top:60px;padding:36px 20px 30px}
+footer .wrap{max-width:820px;margin:0 auto;font-size:13px;line-height:1.9}
+footer h4{font-family:var(--serif);color:#EFE8D6;font-size:15px;margin-bottom:8px}
+footer .row{display:grid;grid-template-columns:1fr;gap:18px;margin-bottom:18px}
+footer .note{font-size:12px;color:#8A8370;border-top:1px solid rgba(217,207,184,.16);padding-top:14px}
+/* ================= 响应式 ================= */
+@media (min-width:768px){
+  body{font-size:16.5px}
+  #main{padding:0 28px 70px}
+  h2.sec{font-size:29px}
+  .hero h1{font-size:52px}
+  .stats{grid-template-columns:repeat(3,1fr);gap:12px}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .flow{grid-template-columns:auto 1fr auto 1fr auto 1fr auto;align-items:stretch;gap:6px}
+  .flow .arrow{align-self:center;padding:0 2px}
+  .flow .node{display:flex;flex-direction:column;justify-content:center}
+  .chcov{padding:44px 40px 32px}
+  .chcov h1{font-size:36px}
+  footer .row{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1024px){
+  #sidebar{transform:none}
+  #topbar{display:none}
+  #main{margin-left:250px;max-width:1180px}
+  #pop{max-width:360px}
+  .cards{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:420px){
+  .stats{grid-template-columns:1fr 1fr}
+  .stat .v{font-size:22px}
+  .chcov h1{font-size:25px}
+  .hero h1{font-size:33px}
+  .wrap{padding:0 2px}
+}
+@media print{
+  #sidebar,#topbar,#mask,.chnav{display:none!important}
+  body{background:#fff}
+  .view{display:block!important;page-break-before:always}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 侧栏导航 ===== -->
+<aside id="sidebar">
+  <div class="brand">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="10" fill="#A8321F"/><text x="32" y="45" font-size="40" font-family="Noto Serif SC,serif" fill="#F7F2E8" text-anchor="middle">经</text></svg>
+    <b>中国经济专题</b>
+  </div>
+  <nav id="nav">
+    <a href="#/home" data-view="home" class="active"><span class="num">总</span>全书总览</a>
+    <a href="#/ch1" data-view="ch1"><span class="num">01</span>绪论：用经济学原理读懂中国</a>
+    <a href="#/ch2" data-view="ch2"><span class="num">02</span>农村改革：产权、激励与合约</a>
+    <a href="#/ch3" data-view="ch3"><span class="num">03</span>人口与劳动力：从无限供给到刘易斯拐点</a>
+    <a href="#/ch4" data-view="ch4"><span class="num">04</span>土地制度与城市化</a>
+    <a href="#/ch5" data-view="ch5"><span class="num">05</span>财政体制：分权与地方激励</a>
+    <a href="#/ch6" data-view="ch6"><span class="num">06</span>金融改革：从抑制到深化</a>
+  </nav>
+  <div class="foot">北京大学国家发展研究院<br>《中国经济专题》2026秋 · 学习整理</div>
+</aside>
+<div id="mask"></div>
+
+<!-- ===== 顶栏(移动端) ===== -->
+<header id="topbar">
+  <button id="burger" aria-label="打开目录"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#24241F" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
+  <svg class="seal" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="10" fill="#A8321F"/><text x="32" y="45" font-size="40" font-family="Noto Serif SC,serif" fill="#F7F2E8" text-anchor="middle">经</text></svg>
+  <span class="t-title">中国经济专题 · 六讲学习网站</span>
+</header>
+
+<main id="main">
+
+<!-- ===================================================== -->
+<!-- ===== 视图：全书总览 (#home) ===== -->
+<!-- ===================================================== -->
+<section id="view-home" class="view active" data-view="home">
+  <div class="hero">
+    <svg class="seal" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="10" fill="#A8321F"/><text x="32" y="45" font-size="40" font-family="Noto Serif SC,serif" fill="#F7F2E8" text-anchor="middle">经</text></svg>
+    <h1>中国经济专题</h1>
+    <p class="sub">六讲学习网站。据北京大学国家发展研究院《中国经济专题》（2026年秋季学期，李力行）第一至第六讲课件整理编写：<b>关键学术概念加粗并附定义</b>，每一个现象与行为都配上生动的实例，帮你把课件读成真正属于自己的知识。</p>
+    <div class="meta">
+      <span>每周三 18:40–20:30 · 二教101</span>
+      <span>期中考 11月11日 · 期末考 2027年1月6日</span>
+      <span>读书笔记 ×2 · 期中30% · 期末60%</span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="sect">
+      <h2>全书一条主线 <small>读每一章都反复问自己这三个问题</small></h2>
+      <div class="flow">
+        <div class="node"><b>权利怎样配置</b><span>谁拥有什么权利？谁负责什么？</span></div>
+        <div class="arrow">→</div>
+        <div class="node"><b>激励怎样形成</b><span>当事人面对什么约束与收益？</span></div>
+        <div class="arrow">→</div>
+        <div class="node"><b>资源怎样流动</b><span>劳动力、土地、资金流向哪里？</span></div>
+        <div class="arrow">→</div>
+        <div class="node"><b>增长与分配</b><span>效率从何而来？收益归了谁？</span></div>
+      </div>
+    </div>
+
+    <div class="sect">
+      <h2>六讲地图 <small>点击进入各章</small></h2>
+      <div class="cards">
+        <div class="card" data-goto="ch1" style="--cc:var(--vermilion)"><div class="no">第 01 讲 · 绪论</div><h3>用经济学原理读懂中国</h3><p>课程怎么学、经济学工具箱、千年经济史、李约瑟之谜，以及改革前夜的起点。</p></div>
+        <div class="card" data-goto="ch2" style="--cc:var(--gold)"><div class="no">第 02 讲 · 农村改革</div><h3>产权、激励与合约</h3><p>统购统销、集体化与大饥荒，包产到户如何让激励回到农户手中，改革的政治经济学。</p></div>
+        <div class="card" data-goto="ch3" style="--cc:var(--blue)"><div class="no">第 03 讲 · 人口与劳动力</div><h3>从无限供给到刘易斯拐点</h3><p>二元经济、人口红利、户籍制度、农民工与2.86亿城乡移民，劳动力如何再配置。</p></div>
+        <div class="card" data-goto="ch4" style="--cc:var(--green)"><div class="no">第 04 讲 · 土地制度与城市化</div><h3>土地如何变成城市化的“第一桶金”</h3><p>两条农地转用通道、土地资本化、土地财政、涨价归谁，以及农民与政府的博弈。</p></div>
+        <div class="card" data-goto="ch5" style="--cc:var(--purple)"><div class="no">第 05 讲 · 财政体制</div><h3>分权与地方激励</h3><p>财政分权理论、五阶段演变、1994分税制、预算外财政与土地财政的形成。</p></div>
+        <div class="card" data-goto="ch6" style="--cc:var(--teal)"><div class="no">第 06 讲 · 金融改革</div><h3>从金融抑制到金融深化</h3><p>银行主导体系、金融抑制、民间金融与影子银行、利率市场化与资本市场。</p></div>
+      </div>
+    </div>
+
+    <div class="sect">
+      <h2>六个关键数字 <small>先建立整体印象</small></h2>
+      <div class="stats">
+        <div class="stat"><div class="v">33%</div><div class="l">1820年中国GDP占世界比重达历史高点（麦迪森数据）</div></div>
+        <div class="stat"><div class="v">1700–3000万</div><div class="l">1959–1961年大饥荒的死亡人数估算区间</div></div>
+        <div class="stat"><div class="v">2.86亿</div><div class="l">2020年中国城乡移民规模（农民工、流动人口）</div></div>
+        <div class="stat"><div class="v">1994</div><div class="l">分税制改革：中央上收财权，土地收入留给地方</div></div>
+        <div class="stat"><div class="v">93%</div><div class="l">1978年中国人民银行占全国金融资产的比例</div></div>
+        <div class="stat"><div class="v">4万亿</div><div class="l">2009年财政刺激计划，其中约3万亿为新增银行贷款</div></div>
+      </div>
+    </div>
+
+    <div class="sect">
+      <h2>中国经济专题十大基本原理 <small>整门课的总纲，后面每一讲都是其中几条的展开</small></h2>
+      <ol class="prl">
+        <li><b>制度变革通过权利、责任和收益的重新配置塑造经济行为。</b><span>中国改革常以<span class="term" data-d="不触动存量归属，只把新增的产出按新规则分享，从而让改革更容易被接受">分享增量收益</span>、<span class="term" data-d="先在小范围试点、成功后再推广的做法">局部试验</span>和<span class="term" data-d="先默许存在、后追认为正式制度的安排">非正式安排</span>起步，长期成效取决于能否<span class="term" data-d="把事实上的做法写进正式政策与法律，形成稳定预期">及时制度化</span>。</span></li>
+        <li><b>经济发展伴随产权的界定、细分和正规化。</b><span>持续增长依赖稳定可信的产权保护——权利越清楚、越有保障，人越愿意长期投入。</span></li>
+        <li><b>地方竞争推动发展和制度创新。</b><span>也可能造成市场分割、重复建设和债务扩张。</span></li>
+        <li><b>财政金融体系可以支撑大规模长期投资。</b><span>但<span class="term" data-d="花钱的人亏了也有人兜底，从而不把成本当回事的状况">软约束</span>会扭曲资金配置与风险定价。</span></li>
+        <li><b>社会网络能促进分工、交易和融资。</b><span>降低早期工业化门槛；产业升级与全球化则要求更开放的市场、更专业的中介、更稳定的规则。</span></li>
+        <li><b>人口红利可以加快工业化。</b><span>人口转型之后，增长更依赖技术进步和生产率提升。</span></li>
+        <li><b>对外开放把禀赋优势转化为增长。</b><span>全球化则对企业的竞争优势提出新要求。</span></li>
+        <li><b>工业化和城市化通过要素再配置提高生产率并重塑社会结构。</b><span>也对治理方式与公共服务提出新需求。</span></li>
+        <li><b>管制不会消除稀缺，却会降低配置效率并滋生寻租。</b><span><span class="term" data-d="不创造价值、只靠特权获取租金的行为，如倒卖稀缺资格">寻租</span>由此而生；<span class="term" data-d="计划价与市场价两轨并存，通过放开增量降低改革成本，长期延续则固化市场分割">双轨制</span>通过放开增量降低改革成本，长期延续则固化市场分割。</span></li>
+        <li><b>面向市场的国家能力能够扩大正规经济和市场范围。</b><span>政府越界则会压制市场活力。</span></li>
+      </ol>
+    </div>
+
+    <div class="sect">
+      <h2>怎么读这本书 <small>全书的三类信息标记</small></h2>
+      <div class="def box"><span class="tag">定义</span><p><b>定义</b>：给出概念的标准含义。正文里加粗并带红点下划线的词，点击即可弹出它的定义。</p></div>
+      <div class="ex box"><span class="tag">实例</span><p><b>实例</b>：课件中真实发生的事件、政策或案例（如上海土地批租、温州标会），用来具象化一个现象。</p></div>
+      <div class="ana box"><span class="tag">类比</span><p><b>类比</b>：用校园、家庭、街市等熟悉场景打的比方，帮助理解抽象机制——这是教学比喻，不是史实。</p></div>
+      <div class="data box"><span class="tag">数据</span><p><b>数据</b>：来自课件的史实与数字，括号内注明年份与来源。图表均标注数据出处与口径。</p></div>
+    </div>
+
+    <div class="sect">
+      <h2>学习建议 <small>课件原话的要点</small></h2>
+      <ol class="prl">
+        <li><b>广泛阅读</b><span>书、论文、纪录片都是素材（《解读中国经济》《产权与中国变革》《枪炮、病菌与钢铁》……）。</span></li>
+        <li><b>国际比较</b><span>把中国放进别国的参照系，才看得出什么是特殊的、什么是普遍的。</span></li>
+        <li><b>关注决策者的约束和偏好</b><span>不要只问“他们为什么这样做”，要问“他们当时面对什么限制、想要什么”。</span></li>
+        <li><b>问题/现象导向</b><span>从一个具体现象出发，而不是从概念出发。</span></li>
+        <li><b>把理解一般化</b><span>尝试把“某村的做法”提炼成可以套用到别处的原理。</span></li>
+      </ol>
+    </div>
+
+    <div class="sect">
+      <h2>全书复习自测 <small>先写下你的答案，再回正文对照</small></h2>
+      <details class="qa"><summary>第一～六讲综合自测（点击展开）</summary><div class="inner">
+        <ol>
+          <li>为什么说1700年的中国是“大国也是不穷的国家”，而1950年则是“人口大国、人均极低”？</li>
+          <li>李约瑟之谜的五类解释是什么？各有什么局限？</li>
+          <li>统购统销怎样通过“寓税于价”抽取农业剩余？户籍制度为什么是它的配套？</li>
+          <li>为什么说集体所有制是“缺乏剩余索取权的所有权”？这与工分制的搭便车有什么关系？</li>
+          <li>为什么1978–1984年农业高增长能说明制度的作用，而1984–1987年增速回落又说明什么？</li>
+          <li>画出刘易斯模型，解释生存工资、剩余劳动力与刘易斯拐点。</li>
+          <li>户籍制度造成哪些劳动力市场摩擦？列举至少三项相关制度或法规。</li>
+          <li>农地转用的两条通道有何区别？为什么租金分配不公会推动通道1（法外用地）？</li>
+          <li>土地资本化的四个要点是什么？为什么说“产权留给了地方政府”是关键？</li>
+          <li>分税制改革之前，财政包干为什么会导致“藏富于企”与地方保护主义？</li>
+          <li>预算外财政的“要么给钱，要么给政策”为什么构成强激励？</li>
+          <li>金融抑制的逻辑是什么？谁是受益者、谁受损？</li>
+          <li>影子银行为什么在中国迅速扩张？它和地方政府债务怎样互相依存？</li>
+          <li>股权分置改革之前，为什么股价不能反映公司基本面？</li>
+        </ol>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- ===== 视图：第一章 绪论 (#ch1) ===== -->
+<!-- ===================================================== -->
+<section id="view-ch1" class="view" data-view="ch1">
+  <div class="wrap">
+  <div class="chcov">
+    <div class="ch-no">01</div>
+    <h1>绪论：用经济学原理读懂中国</h1>
+    <p class="ch-sub">这门课把中国经济当作一座巨大的“病例库”——先讲清楚经济学原理这把“手术刀”，再用它解剖从千年历史到改革前夜的真实中国。</p>
+    <div class="ch-tags"><span>课程安排</span><span>曼昆十大原理</span><span>中国经济十大原理</span><span>千年经济史</span><span>李约瑟之谜</span><span>计划经济</span></div>
+  </div>
+
+  <h2 class="sec"><span class="no">1.1</span>课程定位与安排</h2>
+  <div class="sec-rule"></div>
+  <p><b>课程定位</b>：《中国经济专题》是介绍中国经济的入门课，按专题讲述中国经济发展的过程，重点是<b>改革开放以来</b>的历程，培养运用经济学原理理解、分析经济现象的逻辑分析素养。<span class="term" data-d="把中国经济当作真实病例库，在真实的发展故事里学会经济学">类比</span>：医学院学生靠临床病例学会看病，这门课靠真实发展故事教你经济学。</p>
+  <p><b>两个学习目标</b>：其一，了解中国经济发展历程——它是运用经济学原理的最佳素材；其二，加强<b>经济科学的基本思维训练</b>，即从现象出发，找出当事人的约束与偏好，推出他们的行为与结果。</p>
+  <p><b>课程安排</b>：每周三晚10–11节（18:40–20:30）在二教101上课；任课教师李力行，三位助教；无指定教材，参考书为林毅夫《解读中国经济》、周其仁《产权与中国变革》、巴里·诺顿《中国经济：转型与增长》。第一至四周依次是绪论、农村改革、人口与劳动力、土地制度与城市化，随后是财政体制、金融改革、工业化、对外开放；第10周（11月11日）期中考试；期末考在2027年1月6日晚18:30–20:30。</p>
+  <p><b>成绩评定</b>：两篇读书笔记共10%；期中考试（闭卷）30%，考察前八讲；期末考试（闭卷）60%，考察全部内容。<b>读书笔记五条要求</b>：自选两份阅读材料各写一篇、分两次提交、每篇1000–2000字、内容是“运用经济学原理解释现象＋提出一个研究问题”（不是概述材料）、不允许使用AI工具。</p>
+  <div class="ana box"><span class="tag">类比</span><p>看完美食纪录片，“复述了十道菜”是概述；“用供求原理解释为什么食材一到节日就涨价，并提出‘冷链物流如何改变地方食材价格波动’这个研究问题”，才是合格的读书笔记。</p></div>
+
+  <h2 class="sec"><span class="no">1.2</span>曼昆十大经济学原理</h2>
+  <div class="sec-rule"></div>
+  <p>这十条来自曼昆《经济学原理》，是全部经济学的地基。课件把它们放在开头，意思是：此后讲中国的一切，都是这十条在具体情境里的变奏。</p>
+  <h3>第一组：人们如何做决策</h3>
+  <p><b>1. 人们面临权衡取舍</b>：资源稀缺，得到一样就要放弃另一样。<span class="term" data-d="周三晚上只有一个晚上：去听讲座就不能复习高数，没有两全其美，只有取舍之后的最好">类比</span></p>
+  <p><b>2. 某种东西的成本是为了得到它而放弃的东西，即<span class="term" data-d="为得到某物而必须放弃的其他最好选择的价值，读一年研究生的成本不只是学费，还包括放弃的那一年工资">机会成本</span></b>。</p>
+  <p><b>3. 理性人考虑<span class="term" data-d="多做一单位某件事带来的额外收益与额外成本，决策看边际量而不是总量">边际量</span></b>：吃自助餐，第五盘的满足很小、肚子难受却很大，理性的人在这里停筷。</p>
+  <p><b>4. 人们会对激励作出反应</b>：改变收益与成本，就会改变行为——图书馆对占座不还的人扣信用分，占座立刻少了。</p>
+  <h3>第二组：人们如何相互影响</h3>
+  <p><b>5. 贸易能使每个人状况更好</b>：宿舍里一人擅长修电脑、一人擅长做饭，互相分工交换，两人都比各自包办一切过得好。</p>
+  <p><b>6. 市场通常是组织经济活动的一种好方法</b>：价格像“看不见的手”，把分散的信息汇集起来——清晨的菜市场没人统一规划，却能把各种蔬菜按需求送到摊位上。</p>
+  <p><b>7. 政府有时可以改善市场结果</b>：存在<span class="term" data-d="一个人的行为对他人产生影响但未计入价格的成本或收益，如夜市噪声">外部性</span>、垄断时——夜市的噪声让居民睡不着，需要有人立规矩（限定打烊时间）。</p>
+  <h3>第三组：整体经济如何运行</h3>
+  <p><b>8. 一国的生活水平取决于它生产物品与劳务的能力，即<span class="term" data-d="单位投入产出的数量，决定生活水平">生产率</span></b>：同样一小时，用机器缝纫比手工缝纫做出更多衣服，才有更高收入。</p>
+  <p><b>9. 当政府发行了过多货币时，物价上升，即<span class="term" data-d="货币发行过多导致物价普遍上涨">通货膨胀</span></b>：游戏里系统不断免费发金币，每个人手里金币都变多，装备标价就一路涨。</p>
+  <p><b>10. 社会面临通货膨胀与失业之间的短期权衡取舍</b>（菲利普斯曲线的思想）：刺激政策能让企业短期多招人，却也让物价上涨更快；反之压物价则招聘变冷。</p>
+
+  <h2 class="sec"><span class="no">1.3</span>经济学各领域的基本原理举例</h2>
+  <div class="sec-rule"></div>
+  <p>课件给出九个领域各自的代表性原理，像九把不同的钥匙，之后各讲会反复用到。</p>
+  <h3>制度经济学</h3>
+  <p><b>福利经济学第一定理</b>：完全竞争下市场均衡是<span class="term" data-d="不可能在不损害任何人的情况下再让某人更好的状态">帕累托有效</span>的。<b>福利经济学第二定理</b>：任何帕累托有效的配置，都可以先调整初始禀赋、再让市场运行来实现。<b><span class="term" data-d="若交易费用为零，无论产权最初如何界定，当事人谈判都会达到资源有效配置；反之，现实中交易费用大于零，产权界定才格外重要">科斯定理</span></b>：养蜂人与果农，谈判成本为零时总能安排出总收益最大的蜂群数量；谈判麻烦时，谁拥有权利决定结果。</p>
+  <p><b><span class="term" data-d="资产一旦投入某一特定用途，转作他用价值大跌，如为单一客户定制的模具">资产专用性</span></b>：客户一走，专用模具就是废铁，所以工厂要求长期合同保护自己。<b>交易费用与合约</b>：交易费用是寻找、谈判、监督、执行的成本；合约约定权利与责任以降低它——网购的评价体系与七天退货，比在陌生小摊买东西少很多“怕被骗”的成本。</p>
+  <p><b>供求弹性、价格与租金</b>：弹性衡量数量对价格变动的敏感程度；<span class="term" data-d="要素收入超过其机会成本的部分，供给越缺乏弹性、需求越旺，租金越高">租金</span>是要素收入超过机会成本的部分——演唱会座位固定，需求暴涨时黄牛赚到高额租金。<b>产权划分与收入分配</b>：谁拥有什么权利，决定谁分到收益。<b>组织费用与企业的边界</b>：企业扩张到“内部多组织一项活动的成本＝从市场购买的成本”为止——餐厅要不要自己种菜，取决于管理成本。</p>
+  <h3>金融学 · 国际贸易</h3>
+  <p><b>利息理论</b>：“现在的钱”与“未来的钱”之间的价格。<b>资产定价</b>：资产价格等于未来现金流折算到今天。<b>无套利均衡</b>：同一样东西不会长期存在两个价格，套利者会把差价抹平。<b><span class="term" data-d="各国应专注机会成本较低的产品，而非‘谁都做得最好’；名律师打字虽快，仍应把时间用于打官司">比较优势</span></b>。<b>新新贸易理论</b>：企业有异质性，只有生产率足够高的企业才负担得起出口的固定成本。</p>
+  <h3>人力资本 · 公共经济学</h3>
+  <p><b>家庭内部资源分配</b>与<b>质量–数量权衡</b>：家庭在孩子“数量”与“质量”之间取舍。<b>外部性与政府干预</b>：工厂排污损害下游渔民，征税让它负担外部成本。<b>弹性与税负归宿</b>：税名义上由谁交不等于实际由谁承担，谁更缺乏弹性谁承担更多——租客难换房时，房东能把税转给租客。</p>
+  <h3>经济增长 · 城市经济学 · 行为经济学 · 平台经济</h3>
+  <p><b><span class="term" data-d="对发达国家长期增长规律的几条概括：人均产出持续增长、资本回报率与劳动收入份额大体稳定">卡尔多事实</span></b>；<b>偏向型技术进步</b>：技术进步可能偏向替代劳动（自动分拣机减少分拣工）；<b><span class="term" data-d="生产率增长慢的服务业，相对成本和价格不断上升；四重奏两百年来人数时间没变，乐手工资随社会涨，演出越来越贵">鲍莫尔病</span></b>。<b>集聚经济</b>：经济活动聚集提高效率。<b>空间均衡</b>：自由迁移时好城市的高工资被高房租抵消，各地福利趋于相等。<b><span class="term" data-d="人在头脑里为钱建‘账户’，对不同来源的钱区别对待">心理账户</span></b>与<b>损失规避</b>：丢100元的难受超过捡100元的开心。<b>双边市场</b>：外卖平台商家越多食客越愿意来，反之亦然；<b>规模报酬递增</b>：软件多卖一份几乎没有额外成本。</p>
+
+  <h2 class="sec"><span class="no">1.4</span>中国经济专题十大基本原理</h2>
+  <div class="sec-rule"></div>
+  <p>这十条是整门课的总纲，此后每一讲几乎都是其中一条或几条的具体展开。十大原理的完整列表见首页；这里补两个贯穿全书的定义：</p>
+  <div class="def box"><span class="tag">定义</span><p><b>制度</b>：一套回答“谁有权做什么、谁负责什么、谁拿多少”的规则。规则一变，人的行为跟着变。中国改革常以分享增量收益、局部试验、非正式安排起步，长期成效取决于能否及时制度化。</p></div>
+  <div class="def box"><span class="tag">定义</span><p><b>软约束</b>：花钱的人亏了也有人兜底，于是不把成本当回事。孩子的零花钱不够就找家长补，他就不会精打细算；银行若总认定“出了问题有人救”，放贷就不看风险。</p></div>
+  <p><b>两条最要紧的“暗线原理”</b>：原理1（制度变革通过权利、责任和收益的重新配置塑造经济行为）与原理2（经济发展伴随产权的界定、细分和正规化，持续增长依赖稳定可信的产权保护）——它们将在第二、四讲反复出现。</p>
+
+  <h2 class="sec"><span class="no">1.5</span>千年经济史：从数据看中国与世界</h2>
+  <div class="sec-rule"></div>
+  <p>课件的第一组数据来自经济史学家安格斯·麦迪森的《世界经济千年史》。<span class="term" data-d="以1990年购买力为统一标尺、把各国各时代的收入折算成可比数字的货币单位">1990国际元</span>好比“一碗阳春面能买多少碗”的统一尺子，让汉代和今天的人也能比收入。</p>
+  <p><b>中国与西欧的人均GDP（400–2000年）</b>：公元400年起点相当；400–1200/1300年中国领先；14世纪到19世纪中，中国停滞、西欧起飞；1850–1950年中西差距扩大。图为对数坐标，纵轴每上一格是十倍，2000年西欧约两万、中国约两千多国际元。</p>
+  <p><b>中国在世界经济中的地位（1700–2015）</b>：下图用两条线讲同一个故事——<b>GDP占世界比重</b>从22%（1700）升至33%（1820）的高点，1900、1950年跌到11%、5%，2015年回升到约20%；<b>人均GDP相对世界平均</b>从0.98、0.90一路跌到0.43、0.21，再回到1.16（2015年，预测值）。</p>
+  <div id="c1_share" class="chart" style="height:340px"></div>
+  <p class="chart-note">数据来源：课件“中国与美国在世界经济中的地位（1700–2015）”表，2001、2015年为OECD预测值，人均为1990国际元。</p>
+
+  <h3>改革前夜的起点：1978年中印对比</h3>
+  <p>改革前夕，中国的人均收入并不比印度高，甚至更低（人均GDP：中国155对印度206，2000年美元不变价）；但<b>识字率</b>（65.5%对40.8%）、<b>预期寿命</b>（66岁对54岁）、<b>婴儿死亡率</b>（54.2‰对106.4‰）等“人力发展”指标明显更好，<b>制造业占GDP比重</b>（40%对17%）也高得多——这正是“工业基础较早建立、人力发展水平较高、生活水平较低”的写照。唯一落后很多的是高等教育入学率（0.7%对4.9%）。</p>
+  <div id="c1_cnindia" class="chart" style="height:320px"></div>
+  <p class="chart-note">数据来源：课件第23页“1978年中印统计数据对比”；下图仅展示单位一致的百分比指标，其余指标见正文。</p>
+
+  <h2 class="sec"><span class="no">1.6</span>工业革命与李约瑟之谜</h2>
+  <div class="sec-rule"></div>
+  <div class="def box"><span class="tag">定义</span><p><b>李约瑟之谜</b>：英国科学史家李约瑟在研究中国科技史时提出的问题——为什么科学革命（工业革命）没有发生在中国？它被拆为三步：前现代中国有四大发明、活跃的市场经济与繁华城市；进入现代却成为技术落后的国家；世界经济史上还有类似的“大逆转”。</p></div>
+  <p>课件给出五类解释，每类都有解释力也都有局限，至今没有定论：</p>
+  <ol class="prl">
+    <li><b>文化决定论：儒家文化与科举制度</b><span>最聪明的人才去背诵经典、追求功名，而不是研究机器与实验。若全校最聪明的学生都被引导去考同一种证书，自然少有人搞发明。</span></li>
+    <li><b>超稳定结构：重农抑商</b><span>社会结构长期自我复制，商人地位低，资本与人才难以积累。一个班规规定“种地最光荣、经商是末流”，再有商业头脑的同学也会选择放弃。</span></li>
+    <li><b>高水平均衡陷阱与内卷</b><span>传统农业把土地和劳动用到极致，人口增长吃掉剩余，没有资本投向机器。<span class="term" data-d="投入越来越多、单位产出却几乎不增的现象；一块地两人种已够，挤进六人精耕细作，总产量略增、人均下降">内卷</span>由此而来。</span></li>
+    <li><b>航海大发现与殖民地</b><span>欧洲通过新大陆获得廉价原料与市场，缓解了土地约束——别人家院子不够用，靠到邻村开辟菜地，腾出人手办工坊。</span></li>
+    <li><b>制度：治理制衡、宗教、专利、法治</b><span>制度决定发明者能否获得回报、权力能否被约束。发明家知道专利能保护创意，才更愿意花十年研究。</span></li>
+  </ol>
+  <p>学习提示：李约瑟之谜是“用经济学原理解释大历史”的练习——看似相似的起点，可能因激励与制度不同而走向完全不同的终点。</p>
+
+  <h2 class="sec"><span class="no">1.7</span>国家重建与中国的现代化道路</h2>
+  <div class="sec-rule"></div>
+  <p>课件把近代中国的故事概括为“<b>国家衰败</b>”与“<b>国家重建</b>”。衰败的三个特征：一是“世界中心”与“天朝上国”的文化优越感，缺乏平等交往、借鉴他国的开放心态；二是成熟的官僚体系但<b>财税基础薄弱</b>，缺乏专业行政与有效监督——层级齐全却收不上钱、办不成事；三是西方的冲击与反应，外患加内乱。</p>
+  <p>鸦片战争后，近代国家重建的两种努力都未成功：统治集团自上而下的改革、知识界自下而上的探索。此后重要的外部影响包括俄国十月革命、苏联社会主义实践，以及中国“农村包围城市”的革命实践与中国革命的两阶段纲领（新民主主义到社会主义）。</p>
+
+  <h2 class="sec"><span class="no">1.8</span>计划经济时期：赶超战略与重工业优先</h2>
+  <div class="sec-rule"></div>
+  <div class="def box"><span class="tag">定义</span><p><b>中心—外围理论</b>：发达国家是“中心”，发展中国家是“外围”，外围为中心提供原材料并在全球秩序中依赖中心——好比产业链里上游农户只卖原料，利润都被下游品牌拿走。</p></div>
+  <p><b>赶超战略</b>：后进国家力图在较短时间内追上发达国家的发展战略。<b>重工业优先发展</b>的三点理由：苏联的经验；重工业具有技术和知识外部性并对国防重要；<span class="term" data-d="建立自己的生产能力替代进口，初期需要保护">进口替代</span>。但这一战略与当时的<b>要素禀赋</b>矛盾：重工业周期长、收效慢、机器依赖进口、资本密集度高，而当时中国最丰富的是劳动力、最稀缺的是资本。</p>
+  <div class="ana box"><span class="tag">类比</span><p>一户人家劳动力很多、资金很少，却偏要建一座需要巨额投资的工厂——必然捉襟见肘。</p></div>
+  <h3>计划经济的经营管理方式</h3>
+  <ul class="prl">
+    <li><b>政府配置经济资源（要素与产品）</b><span>由计划而不是市场决定谁生产什么、给谁——学校规定每个班每月必须领同样多的粉笔，不管用不用得完。</span></li>
+    <li><b>扭曲价格信号、压低要素价格</b><span>价格本应告诉人们什么稀缺，被压低后失去这一功能。</span></li>
+    <li><b>行政计划替代市场、剥夺企业自主权</b><span></span></li>
+    <li><b>国家全面介入社会经济</b><span>城市是社会主义改造（确立公有制）；农村是公社化、统购统销与户籍制度。</span></li>
+  </ul>
+  <p><b>后果（课件四点）</b>：较低的生活水平；较少的经济活动自由；工业基础较早建立；相对较高的人力发展水平（识字率、预期寿命）。</p>
+  <p><b>国防与工业</b>：苏联援建156个工程；大跃进；两弹一星；<span class="term" data-d="为备战把工业布局向西部内陆山区转移">三线建设</span>。三线企业建立时间分布示意：1961–1963年每年仅约二十家，1965–1966年升至约一百至一百四十余家，1970年达到约220家的峰值，之后回落到每年几十家。</p>
+  <div id="c1_sanxian" class="chart chart-sm" style="height:260px"></div>
+  <p class="chart-note">示意曲线：数值为课件“三线企业建立时间分布图”的区间读数，非逐年精确值。</p>
+  <p><b>农村建设</b>：农田水利、妇女解放、扫除文盲、爱国卫生运动、合作医疗；“赤脚医生”配合合作医疗把基本医疗送到村里。</p>
+
+  <h3>计划经济时期的数据：工业化超前，就业结构滞后</h3>
+  <p>1952到1978年，工业在国民收入中的份额从19.5%涨到49.4%，农业从57.7%降到32.8%；可就业里农业仍占73.3%，工业只有12.5%。<b>产值结构像工业国，劳动力却大多还在种地</b>——这就是“工业化超前、就业结构滞后”。</p>
+  <div id="c1_income" class="chart" style="height:300px"></div>
+  <div id="c1_emp" class="chart chart-sm" style="height:280px"></div>
+  <p class="chart-note">数据来源：课件第22页“国民收入份额占比”与“就业结构”表。</p>
+
+  <h2 class="sec"><span class="no">1.9</span>学习建议与本章小结</h2>
+  <div class="sec-rule"></div>
+  <p>课件的五条学习建议：广泛阅读；国际比较；关注决策者的约束和偏好；问题/现象导向；把理解一般化。</p>
+  <div class="data box"><span class="tag">小结</span><p>本章回答了四件事：课程怎么学；经济学的“工具箱”有哪些；长期历史里中国处于什么位置（麦迪森数据、李约瑟之谜）；改革前夕的起点是什么（国家重建、赶超战略与计划经济的特征和后果）。下一章从起点进入：计划经济下农民没有积极性，怎么办？</p></div>
+  <div class="chnav" data-chnav></div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- ===== 视图：第二章 农村改革 (#ch2) ===== -->
+<!-- ===================================================== -->
+<section id="view-ch2" class="view" data-view="ch2">
+  <div class="wrap">
+  <div class="chcov">
+    <div class="ch-no">02</div>
+    <h1>农村改革：产权、激励与合约</h1>
+    <p class="ch-sub">国家、集体、个人三者权利分布的变化，怎样回答“农业生产如何组织”这一难题：从统购统销、集体化与大饥荒，到“交够国家的、留够集体的、剩下都是自己的”。</p>
+    <div class="ch-tags"><span>组织问题</span><span>统购统销</span><span>集体化</span><span>大饥荒</span><span>包产到户</span><span>改革的政治经济学</span></div>
+  </div>
+
+  <h2 class="sec"><span class="no">2.1</span>经济活动如何组织</h2>
+  <div class="sec-rule"></div>
+  <div class="def box"><span class="tag">定义</span><p><b>组织问题</b>：任何经济活动都要回答——由谁来做？按什么结构分工？责任和收益怎样分？农村改革的实质，就是“农业生产如何组织”的问题。</p></div>
+  <p><b>组织的主体</b>：个人、家庭、企业、政府、社区、合作社都可以。办一场班级联欢，你可以一个人包办（个人）、几个室友合办（家庭式）、请专业公司承办（企业）、或由班委统一安排（政府）。<b>组织结构的考量</b>：控制能力、信息传导、要解决问题的特征（是否需要灵活应变）——一桌十人自由点菜很容易，一千人的婚宴只能统一套餐，因为信息传不上去。</p>
+  <p><b>科斯：企业的边界</b>：企业存在是为了降低<span class="term" data-d="为完成交易而付出的寻找、谈判、监督、执行成本">交易成本</span>，其边界由内部组织成本与市场交易成本的比较决定——餐厅要不要自己种菜，取决于哪个更贵。</p>
+  <h3>国家的特点：四位思想家的视角</h3>
+  <ul class="prl">
+    <li><b>韦伯：国家是合法拥有暴力的唯一主体</b><span>只有交警能合法地让你停车，路人这么做就是违法。</span></li>
+    <li><b>巴泽尔：国家通过实施合约降低交易费用</b><span>借钱不还你可以去法院，国家把“不守信用”的成本抬高了。</span></li>
+    <li><b>列宁：社会主义是一个超级“国家—公司”</b><span>对经济进行监督、调节和控制。</span></li>
+    <li><b>诺斯：诺斯悖论</b><span>使统治者租金最大化的所有权结构，与降低交易费用、促进经济增长的有效制度之间存在持久矛盾。学校想多收赞助费，就倾向设计“交钱才能用”的资源分配，可这会让资源用得更低效。</span></li>
+  </ul>
+
+  <h2 class="sec"><span class="no">2.2</span>农产品统购统销</h2>
+  <div class="sec-rule"></div>
+  <p>新中国要靠赶超战略实现工业化，可这个超级“国家—公司”面对的是5亿农民：<span class="term" data-d="以家庭为单位、土地细碎、规模很小、主要为自家消费而生产的农业（参见黄宗智《华北的小农经济与社会变迁》）">小农经济</span>刚刚完成按人口平均分配的土地改革。<b>能靠税收吗？</b>对照是日本明治维新后的“重租重税”，用高额地租和税收把农业剩余转为工业化的<span class="term" data-d="工业起步时需要的第一笔资金">原始积累</span>。</p>
+  <div class="def box"><span class="tag">定义</span><p><b>寓税于价</b>：不直接收税，而是通过规定交易价格来抽取。1953年开始实行“<b>统购统销</b>”：统购压低农产品收购价、降低工业原料成本；统销以低价供应城市、支持城市低工资；二者合起来提高工业利润。</p></div>
+  <div class="ana box"><span class="tag">类比</span><p>学校食堂规定：所有菜农必须以统一低价把菜卖给食堂，食堂再以低价卖给学生。学生饭钱便宜，但菜农收入被压低了。</p></div>
+  <p><b>工农业产品剪刀差</b>：工业品价格相对偏高、农产品价格相对偏低，两条价格曲线像剪刀张开——农民卖一百斤粮食换到的拖拉机零件越来越少。<b>户籍制度压低农业的机会成本</b>：要让农民接受低价，就要让他们没有别的出路——你被迫只能在一家饭店打工，老板压低工资你也只能接受。</p>
+
+  <h2 class="sec"><span class="no">2.3</span>农村集体化</h2>
+  <div class="sec-rule"></div>
+  <p>统购统销之下农民生产积极性下降，国家怎么办？答案是：<b>国家政权直接改造农民所有权</b>，从土改转向集体化。</p>
+  <ul class="prl">
+    <li><b>土地改革（1947–1950）</b><span>3亿无地少地农民分得地主富农的7亿亩土地、297万头耕畜，免除700亿斤粮食地租；实现“耕者有其田”；1950年《土地法》承认土地所有者自由经营、买卖及出租土地的权利。</span></li>
+    <li><b>农业合作化（1953–1956）</b><span>走由初级合作社到集体所有制高级社的道路：从承认小私产的“合作”，到消灭私产的“集体”。1953–1956年全国完成农业集体化。</span></li>
+    <li><b>人民公社化（1958）</b><span>经过“一平（贫富拉平）、二调（无偿调拨）、三收款（银行贷款收回）”完成。</span></li>
+  </ul>
+  <p><b>传统意义上的集体经济</b>：传统中国农村由士绅主导，“皇权不下县”；传统合作以个人所有为基础——几户邻居各出钱买一台水泵、共用、按出资分摊电费，是自愿的合作经济。<b>1950年代的集体化不是自发的</b>：它是国家权力深入农村、全面干预和改造农民私人产权的结果。由此得出三点：财产权利来源不同，产权强度不同；集体是国家意志的执行者；<span class="term" data-d="在支付了所有成本和约定份额之后，剩余收益归谁的权利">剩余索取权</span>缺位。</p>
+  <div class="ana box"><span class="tag">类比</span><p>小摊主交完货款、房租之后赚的钱都是自己的，所以拼命经营；被固定发工资的摊位管理员没有这种动力——这就是剩余索取权的力量。</p></div>
+  <p><b>跨国比较</b>：北欧农业合作社（自愿加入、保留私有财产）、英国信托制、土地公有制（越南、埃塞俄比亚）。</p>
+
+  <h2 class="sec"><span class="no">2.4</span>人民公社与大饥荒</h2>
+  <div class="sec-rule"></div>
+  <p><b>人民公社的特点：一大二公</b>——规模大（公社平均5000户农民）；公有化程度高（土地、耕畜、农具和公共财产无偿收归公社）；修建大量水利基础设施；管理机构为管理委员会、生产大队和生产队。</p>
+  <p><b>工分制</b>：农民按劳动记工分、按工分分配收益。两个问题：一是<b>搭便车</b>（出工不出力，别人干活自己也能分）；二是“<b>生产与分配相互独立</b>”（付出多少与分到多少脱节）——小组作业里每个人拿同样成绩，最勤奋的人就会想“我何必比别人多做？”</p>
+  <div class="ex box"><span class="tag">实例</span><p><b>大饥荒（1959–1961）</b>：死亡1700万至3000万人。成因包括天气、浪费资源、公共食堂、集体化、<span class="term" data-d="各地虚报产量，国家据此多征购，农民口粮反而不足">浮夸风</span>与过度征购、政治动机等。曹树基《大饥荒》的省区估计：非正常死亡比例最高的是安徽（约18.37%）、四川（约13.07%）、贵州（约10.23%），合计约3245.8万人，占灾前人口约5.11%。</p></div>
+  <div class="def box"><span class="tag">定义</span><p><b>森（Sen）的食物获取权理论（1981）</b>：饥荒不一定因为食物总量不够，而是一部分人对食物的“获取权”（购买力、权利）崩溃。粮仓里有粮食，但一个孩子被关在门外，哪怕家里粮食充足，他也没有吃的权利。</p></div>
+  <p><b>人口数据</b>：出生率与死亡率图（1949–1978）中，死亡率1960年升到约25‰的高点，出生率1961年跌到约18‰，随后迅速反弹，1963年达到约43‰的峰值——大饥荒与“补偿性生育”在数据上清晰可见。</p>
+
+  <h2 class="sec"><span class="no">2.5</span>危机下的政策调整与包产到户</h2>
+  <div class="sec-rule"></div>
+  <div class="def box"><span class="tag">定义</span><p><b>部分退出权</b>：农民把努力和责任心从公田退出、留在自留地里发挥作用，用行动“投票”。班级大扫除没人认真，但每人认真打扫自己的桌子，就是“部分退出”。</p></div>
+  <p><b>政策退却与反复</b>：1960年恢复自留地、局部包产到户；1962年人民公社实行“<span class="term" data-d="公社、大队、生产队三级所有，以生产队为基本核算单位">三级所有、队为基础</span>”；之后政策反复；1978年四川实行休养生息政策，自留地扩展到总耕地面积的15%。<b>底层改革</b>：1978年小岗村是自发行动的代表，这类改革往往靠分权决策和地方政治领导人的倾向。</p>
+  <p><b>提升产量的简单经济逻辑</b>：剩余索取权提供激励——<b>“交够国家的、留够集体的，剩下的都是自己的”</b>。承包一块地，多收的粮全归自己，农民自然舍得多下肥、多除草。</p>
+  <h3>改革到底带来了什么</h3>
+  <p>1978–1984年农业总体增速7.7%，是改革前的近三倍；种植业产出增加约42%，而土地反而略少、劳动只增加约11%——增长不能只用投入增加解释，<b>制度改善带来的激励提高</b>是重要原因。1984–1987年增速回落、棉花甚至负增长，说明一次性的制度红利释放后，需要新的改革来推动。</p>
+  <div id="c2_growth" class="chart" style="height:300px"></div>
+  <p class="chart-note">数据来源：课件“农业年均增长率（%）”表：农业总体、种植业、粮食、棉花、畜牧业在1952–1978、1978–1984、1984–1987三个时期的年均增长率。另：国家超购价指数1979年升至140.7（1978=100），农产品相对价格提高约四成；种植业产出指数1984年达142.23（1978=100）。</p>
+
+  <h2 class="sec"><span class="no">2.6</span>改革的政治经济学</h2>
+  <div class="sec-rule"></div>
+  <p>课件参考《杜润生自述》，概括了改革的几个特点：</p>
+  <ul class="prl">
+    <li><b>危机驱动</b><span>粮食是“软肋”，吃饭问题逼着改革发生。</span></li>
+    <li><b>渐进式改革</b><span>前期改革成果有助于说服更多人支持。</span></li>
+    <li><b>自发创新的合法化</b><span>从政策文件到法律，形成稳定预期；“不合法的要让它合法起来”（邓小平）。</span></li>
+    <li><b>信息成本与制度变迁</b><span>诺斯：要理解决策，必须区分现实世界与行为者所理解的世界，关注行为者能得到的信息与不完全反馈——班长只听到几个人的发言就以为大家愿意换座位，信息不完整导致决策偏离。</span></li>
+  </ul>
+  <h3>中央文件与“提法”的微妙变化</h3>
+  <p>中央文件在制度变革中有特殊地位——一个词的变化就是一次制度的松动。从“不许包产到户”到“家庭联产承包责任制长期不变”，只用了四年：</p>
+  <ul class="tl">
+    <li><span class="yr">1978年12月</span><span class="ev">十一届三中全会农业决定草案：“<b>不许包产到户</b>”</span></li>
+    <li><span class="yr">1979年4月</span><span class="ev">七省三县座谈会《纪要》提出“深山、偏僻地区的孤门独户，实行包产到户，<b>也应当允许</b>”；别处已搞的，一时说不服也不要勉强纠正、更不能批判斗争</span></li>
+    <li><span class="yr">1979年9月</span><span class="ev">十一届四中全会通过农业决定：除某些副业和边远山区、交通不便的单家独户外，<b>也不要</b>包产到户</span></li>
+    <li><span class="yr">1980年9月</span><span class="ev">省市区第一书记会议分歧很大：现行体制“可以使群众满意的，就不要搞包产到户”；对边远山区和贫困地区，群众要求包产到户的<b>应当支持</b>，可以包产到户，也可以包干到户</span></li>
+    <li><span class="yr">1982年</span><span class="ev">中央1号文件明确肯定包括包产到户在内的“<b>家庭联产承包责任制</b>”的普遍合法性，并宣布<b>长期不变</b></span></li>
+    <li><span class="yr">1982–1986年</span><span class="ev">连续五个1号文件，一再肯定包产到户长期不变，并把体制改革推向农村各个方面</span></li>
+  </ul>
+
+  <h2 class="sec"><span class="no">2.7</span>包产到户之后</h2>
+  <div class="sec-rule"></div>
+  <p><b>官方提法的演变</b>：“家庭联产承包责任制”“统分结合的双层经营体制”中的“联产”“责任”“统”逐渐淡出，1988年确定为“<b>家庭承包经营</b>”。<b>后续问题与探索</b>：按人口均分与按劳动力分配之争（均分公平但不一定高效）；土地细碎不利于机械化；贵州湄潭“<span class="term" data-d="承包期内人口变动不再调地，以稳定预期">生不增、死不减</span>”；<b>两田制</b>（口粮田按人口均分、责任田按能力承包）；<b>反租倒包</b>（乡镇或村集体先租下承包地再转租给他人）；集体所有、村民自治与家庭承包的现实矛盾；2002年《农村土地承包法》把承包期定为30年。</p>
+  <p><b>其他改革</b>：1979年提高农产品收购价；1981年鼓励多种经营；1984年鼓励办乡镇企业、允许农民进镇落户、允许自带口粮进城务工经商；1985年农产品购销体制改革。</p>
+  <p><b>农村改革的主线：经合约而形成产权</b>。<span class="term" data-d="因为你属于这个集体而拥有，随身份而来的权利">成员权</span>与<b>产权</b>（通过合约界定的、可交易受保护的权利束）对比；经济学意义上产权可分为占有、使用、收益、转让四种权能并分开配置；<b>三权分置</b>（集体所有权、农户承包权、土地经营权分开）——一块地像一套房：集体是“业主”，农户有长期居住权，经营可以租给别人。</p>
+
+  <h2 class="sec"><span class="no">2.8</span>集体经济在中国</h2>
+  <div class="sec-rule"></div>
+  <p>课件提醒，“集体”在中国有多种形态：城市中相对“全民所有制”而存在的集体所有制企业、二轻企业；<span class="term" data-d="实际是私人经营，却戴上集体名义以减少政治风险、获得便利的企业">“红帽子”乡镇企业</span>；校办企业。</p>
+  <p><b>需要思考的问题</b>：“集体”的干部更靠近国家还是更靠近个人？名义上的集体所有制与现实中普遍的<b>集体虚化</b>（名存实亡）；集体到底是增加还是降低交易费用？农地流转、非农建设项目中集体起什么作用？集体所有制背后是国家权力边界的问题。课件建议用“一些有名的村庄”作案例讨论。</p>
+
+  <h2 class="sec"><span class="no">2.9</span>本章总结</h2>
+  <div class="sec-rule"></div>
+  <div class="data box"><span class="tag">小结</span><p><b>农业发展的经济规律</b>：要素投入、技术进步、资本积累——关键是如何组织要素、激励技术进步、利用分散的信息，计划式自上而下还是自发式自下而上。<b>理解农村改革的线索</b>：国家、集体、个人三者权利分布的变化；落到包产到户、乡镇企业、其他农村改革。<b>经济学原理</b>：产权、信息与激励；技术进步与制度变迁的作用。</p></div>
+  <div class="chnav" data-chnav></div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- ===== 视图：第三章 人口与劳动力 (#ch3) ===== -->
+<!-- ===================================================== -->
+<section id="view-ch3" class="view" data-view="ch3">
+  <div class="wrap">
+  <div class="chcov">
+    <div class="ch-no">03</div>
+    <h1>人口与劳动力：从无限供给到刘易斯拐点</h1>
+    <p class="ch-sub">农业解放出来的劳动力要去哪里？二元经济如何转向一元？人口红利怎样助推工业化，又怎样在人口转型后消失——以及户籍制度如何塑造了2.86亿人的迁徙。</p>
+    <div class="ch-tags"><span>刘易斯模型</span><span>人口转型</span><span>人口红利</span><span>二元劳动力市场</span><span>城乡移民</span><span>户籍制度</span><span>非正规就业</span></div>
+  </div>
+
+  <h2 class="sec"><span class="no">3.1</span>刘易斯模型</h2>
+  <div class="sec-rule"></div>
+  <div class="def box"><span class="tag">定义</span><p><b>二元经济</b>：一个经济里同时存在两个性质不同的部门——工业（现代部门）和农业（传统部门），相应地有城市与农村两个劳动力市场。一家大公司里，一边是拿市场工资的专业岗位，一边是按家族惯例吃饭的杂务岗位，两边工资规则不一样。</p></div>
+  <p><b>农业生产函数</b>：表示投入多少劳动能产出多少农业产出，假定<b>边际产出递减直到0</b>——一块地三个人种刚好，再来两个人只是在地边多站着，几乎不增产。<b>生存工资（w<sub>s</sub>）</b>是维持农民基本生活所需的收入。农业劳动力为L<sub>2</sub>时边际产出等于w<sub>s</sub>；超过L<sub>1</sub>的劳动力边际产出为零（或低于w<sub>s</sub>），是<b>剩余劳动力</b>。</p>
+  <p><b>城市工业的劳动力供给：从无限到短缺</b>。只要城市工资略高于w<sub>s</sub>，农村剩余劳动力就愿意进城，所以早期工业部门面对几乎“无限”的劳动力供给，工资长期停在w<sub>s</sub>附近；当剩余劳动力被吸收完，招人变难，工资才开始上升——这一转折就是<b>刘易斯拐点</b>（城市劳动力工资开始上升；图中L<sub>1</sub>是“短缺点”，L<sub>2</sub>是“起飞点/拐点”）。</p>
+  <div class="ana box"><span class="tag">类比</span><p>一座工地原本天天有人排队等活，工头压低工价也不愁；到了排队的人越来越少，工头就得涨价才招得到人。</p></div>
+  <svg viewBox="0 0 640 280" role="img" aria-label="刘易斯模型示意图" style="width:100%;height:auto;margin:10px 0;background:#FAF6EE;border:1px solid var(--line);border-radius:10px">
+    <text x="150" y="18" text-anchor="middle" font-size="13" fill="#5c584d" font-family="Noto Sans SC,sans-serif">农业部门：Q=F(L)</text>
+    <text x="470" y="18" text-anchor="middle" font-size="13" fill="#5c584d" font-family="Noto Sans SC,sans-serif">工业部门：劳动力供给</text>
+    <line x1="40" y1="30" x2="40" y2="230" stroke="#8A8370" stroke-width="1.2"/>
+    <line x1="40" y1="230" x2="290" y2="230" stroke="#8A8370" stroke-width="1.2"/>
+    <text x="22" y="120" fill="#5c584d" font-size="12" font-family="Noto Sans SC,sans-serif">Q</text>
+    <text x="150" y="248" fill="#5c584d" font-size="12" text-anchor="middle" font-family="Noto Sans SC,sans-serif">L（劳动）</text>
+    <path d="M40 230 Q110 150 190 120 T290 96" fill="none" stroke="#A8321F" stroke-width="2.2"/>
+    <line x1="40" y1="150" x2="290" y2="150" stroke="#34566B" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="300" y="146" fill="#34566B" font-size="12" font-family="Noto Sans SC,sans-serif">生存工资 w_s</text>
+    <line x1="150" y1="230" x2="150" y2="150" stroke="#8A8370" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <line x1="238" y1="230" x2="238" y2="150" stroke="#8A8370" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text x="150" y="243" fill="#A8321F" font-size="12" text-anchor="middle" font-family="Noto Serif SC,serif">L₁ 短缺点</text>
+    <text x="238" y="243" fill="#A8321F" font-size="12" text-anchor="middle" font-family="Noto Serif SC,serif">L₂ 起飞点(拐点)</text>
+    <path d="M150 260 h88" stroke="#A8321F" stroke-width="8" opacity=".22"/>
+    <text x="194" y="276" fill="#5c584d" font-size="12" text-anchor="middle" font-family="Noto Sans SC,sans-serif">剩余劳动力</text>
+    <line x1="380" y1="30" x2="380" y2="230" stroke="#8A8370" stroke-width="1.2"/>
+    <line x1="380" y1="230" x2="620" y2="230" stroke="#8A8370" stroke-width="1.2"/>
+    <text x="366" y="120" fill="#5c584d" font-size="12" font-family="Noto Sans SC,sans-serif">w</text>
+    <text x="500" y="248" fill="#5c584d" font-size="12" text-anchor="middle" font-family="Noto Sans SC,sans-serif">L（劳动）</text>
+    <path d="M380 150 L560 150 L600 60" fill="none" stroke="#34566B" stroke-width="2.2"/>
+    <path d="M380 60 L600 190" fill="none" stroke="#A8321F" stroke-width="2.2"/>
+    <text x="600" y="56" fill="#34566B" font-size="12" font-family="Noto Sans SC,sans-serif">供给</text>
+    <text x="588" y="196" fill="#A8321F" font-size="12" font-family="Noto Sans SC,sans-serif">需求</text>
+    <circle cx="480" cy="120" r="4" fill="#A8321F"/>
+    <circle cx="560" cy="150" r="4" fill="#A8321F"/>
+    <text x="480" y="108" fill="#A8321F" font-size="12" text-anchor="middle" font-family="Noto Serif SC,serif">短缺点</text>
+    <text x="560" y="246" fill="#A8321F" font-size="12" text-anchor="middle" font-family="Noto Serif SC,serif">L₂ 起飞点(拐点)</text>
+    <text x="396" y="146" fill="#5c584d" font-size="12" font-family="Noto Sans SC,sans-serif">w_s</text>
+  </svg>
+  <p class="chart-note">示意图，依据课件第4–5页刘易斯模型绘制；右图供给曲线在剩余劳动力被吸收完（L₂）后转为上升。</p>
+  <p><b>亚洲新兴经济体制造业工资（2010年美元，1978–2008）</b>：中国从1978年约1,032升至2008年约3,558；同期菲律宾3,056→4,325，泰国2008年约2,896，印度1978年约2,036、2006年约1,004，印尼2008年约1,099。读法：中国制造业工资在1980、90年代长期偏低，2000年后快速抬升，2008年已超过泰国、接近菲律宾——与“拐点之后工资上升”的刘易斯逻辑一致。</p>
+
+  <h2 class="sec"><span class="no">3.2</span>人口转型与人口红利</h2>
+  <div class="sec-rule"></div>
+  <div class="def box"><span class="tag">定义</span><p><b>人口转型</b>：一个社会从“高出生、高死亡”走向“低出生、低死亡”的过程，通常分三阶段：第一阶段出生率与死亡率都高、人口增长慢；第二阶段死亡率先因医疗卫生改善而下降、出生率仍高、人口快速增长；第三阶段出生率也下降、增长放缓。一所新医院开张，先让婴儿存活率大增，一二十年后家庭觉得不必生那么多。</p></div>
+  <p><b>中国的人口转型</b>（1949–2021）：三次生育高峰——第一次1950–1957年，第二次1962–1973年（大饥荒之后的补偿性生育），第三次1985–1991年。政策节点：</p>
+  <ul class="tl">
+    <li><span class="yr">1973</span><span class="ev">“晚、稀、少”政策</span></li>
+    <li><span class="yr">1980</span><span class="ev">只生一个孩子</span></li>
+    <li><span class="yr">1984</span><span class="ev">“开小口”：允许部分农村家庭生二孩</span></li>
+    <li><span class="yr">1991 / 2000 / 2010</span><span class="ev">“八五”计划加强人口控制 → “保持低生育率” → “保持适当的低生育率”</span></li>
+    <li><span class="yr">2013 / 2015 / 2021</span><span class="ev">单独二孩 → 全面二孩 → 三孩政策</span></li>
+  </ul>
+  <p><b>人口金字塔</b>：1980年总人口约9.78亿，宽底尖顶；2000年约12.70亿，中部鼓起；2020年约14.03亿，底部明显收窄；2040年（预测）约13.95亿，老年部分鼓起、底部更窄。</p>
+  <p><b>抚养比</b>：非劳动年龄人口（孩子和老人）与劳动年龄人口之比；2000年劳动年龄人口占比约70%，抚养比在2013年由下降转为上升。<b>人口红利</b>：低抚养比为经济发展创造有利条件——劳动力供给充裕、高储蓄率、高投资、高增长。1982–2000年中国抚养比下降20.1个百分点；研究测算抚养比与年经济增速的弹性约为0.115，通俗地说，抚养比每降1个百分点，年增速约高0.115个百分点。</p>
+  <div class="ana box"><span class="tag">类比</span><p>一个家有四个挣钱的、两个吃饭的，负担轻、存款多，能买更多机器，来年挣得更多；老人和孩子增多，负担就重了——人口转型之后，增长只能更依赖技术进步和生产率（原理6）。</p></div>
+  <p><b>全球视野</b>：全球总和生育率1963年5.3、1992年3.0、2021年2.3（世界银行）；2021年撒哈拉以南非洲多在4.0以上，中国、欧洲、北美多在1.0–1.9之间。联合国预测中国总人口2024年14.2亿、2050年12.7亿、2100年6.39亿。Bloom等（2007）的跨区域对比显示，东亚的劳动年龄人口相对被抚养人口比值在2010年前后达到最高点（约2.45）后下降——不同地区的“红利窗口”出现在不同时间。</p>
+
+  <h2 class="sec"><span class="no">3.3</span>城乡二元劳动力市场</h2>
+  <div class="sec-rule"></div>
+  <p><b>计划经济时代的劳动力市场</b>：“超级国家公司”下辖的大型公共就业体系，城乡分割。城市部门是国企、集体企业、机关事业单位（后来加入外企、民企、个体户）；“<b>铁饭碗</b>”指终身稳定的城市就业；<span class="term" data-d="国企为完成吸纳就业、提供福利等政策任务而承担的不一定符合效率的负担">政策性负担</span>使国企即使生意清淡也不能裁人。农村就业是农、林、牧、副、渔。计划经济时期城乡流动几经反复：大跃进大规模招工 → 精减职工减少城镇人口 → 三线建设 → 知青上山下乡与返城。</p>
+  <p><b>就业结构变化</b>（单位：%）：</p>
+  <table class="tbl"><colgroup><col style="width:34%"><col style="width:22%"><col style="width:22%"><col style="width:22%"></colgroup>
+    <caption>城乡就业分布（1978年4.02亿 vs 2003年7.44亿）</caption>
+    <tr><th>部门</th><th>1978</th><th>2003</th><th>趋势</th></tr>
+    <tr><td>集体农场/农户</td><td class="hl">69%</td><td>47%</td><td>集体农场消失，农户经营成主体</td></tr>
+    <tr><td>国有部门（国企+政府等）</td><td>18%</td><td>9%</td><td>大幅下降</td></tr>
+    <tr><td>公有/非公乡镇企业</td><td>6%</td><td>18%</td><td>崛起</td></tr>
+    <tr><td>城市非正规部门+个体户</td><td>0%</td><td>16%</td><td>从无到有</td></tr>
+    <tr><td>私营、新型公司、外资等</td><td>0%</td><td>7%</td><td>新力量</td></tr>
+  </table>
+  <p><b>城市就业（1988–2014，百万人）</b>：国企由约100降至约65，集体由约35降至约7，私营及其他由约10升至约325——1990年代末私营部门就业已超过国企。25年间就业结构的改变，是经济改革最直观的“人口版”证据。</p>
+
+  <h2 class="sec"><span class="no">3.4</span>农村劳动力</h2>
+  <div class="sec-rule"></div>
+  <p><b>剩余劳动力：在何种意义上“剩余”？</b>不是说这些人“没用”，而是在当时可以流动和配置的范围里，他们的<b>边际产出</b>很低——一个人在小村里没活干，放到工厂里可能很有用，“剩余”取决于他能流向哪里。</p>
+  <p><b>乡镇企业：“离土不离乡、进厂不进城”</b>：农民脱离耕地、在本乡工厂做工，户口和家仍在村里，形成城市部门、农业部门、农村工业部门的<b>三元结构</b>。农村企业就业人员1996年达到1.35亿。<span class="term" data-d="在无法实现理想制度时采用的退而求其次的做法">次优制度安排</span>：乡镇企业就是户籍和土地制度限制下的一种“次优”。</p>
+  <p><b>经济活动的组织与劳动力配置效率</b>：劳动力的价值取决于它与资本、土地怎样搭配，也取决于金融制度、土地产权、户籍制度——例如农地确权如何影响农业生产率？考虑<b>劳动力再配置效应</b>：农民拿到有保障的土地证后，敢把地租出去外出打工，地反而被种得更好。</p>
+
+  <h2 class="sec"><span class="no">3.5</span>城乡移民</h2>
+  <div class="sec-rule"></div>
+  <p>不同称呼：农民工、进城务工人员、流动人口。<b>规模</b>：2020年城乡移民达到2.86亿。理解移民的<b>拉力与推力</b>：</p>
+  <div class="def box"><span class="tag">定义</span><p><b>拉力</b>：城市的经济状况（就业机会、工资）、公共服务（移民子女教育、医疗）、对特定人力资本的需求、提供就业机会的社会网络。<b>推力</b>：农村的机会成本（农业产出好坏）、农村财产产权的稳固程度、资本积累。一个小伙子离乡，既因为城里工资更高（拉力），也因为家里地少、种地不赚钱（推力）。</p></div>
+  <p><b>年龄分布</b>：Meng（2012，RUMiCI调查）显示，农村外出劳动力集中在16–35岁，20–30岁约占一半，40岁以后迅速下降。<b>含义</b>：福利方面是公共服务与保障、家庭团聚；增长方面是生产与消费。还有农民工回流与反向移民：外出者因年龄、家庭、机会变化返回家乡。</p>
+
+  <h2 class="sec"><span class="no">3.6</span>户籍制度</h2>
+  <div class="sec-rule"></div>
+  <p><b>由来与演变</b>：</p>
+  <ul class="tl">
+    <li><span class="yr">1958</span><span class="ev">大跃进背景下颁布户口登记条例，城乡分割制度化</span></li>
+    <li><span class="yr">1980年代早期</span><span class="ev">小城镇发展战略</span></li>
+    <li><span class="yr">1990年代</span><span class="ev">户籍限制小幅放松</span></li>
+    <li><span class="yr">2003</span><span class="ev">孙志刚事件，推动废止收容遣送制度</span></li>
+    <li><span class="yr">2012</span><span class="ev">中小城市解除户籍限制</span></li>
+    <li><span class="yr">2014</span><span class="ev">《关于进一步推进户籍制度改革的意见》</span></li>
+    <li><span class="yr">2026</span><span class="ev">《关于推行常住地提供基本公共服务的实施意见》（课件所列）</span></li>
+  </ul>
+  <p><b>社会福利和公共服务依附于户口</b>：户口不仅是一个身份，还决定能否在当地上学、买房、享受保障。<span class="term" data-d="通过人们愿意为一个城市户口付多少钱来估计户口的价值">户口支付意愿的测度</span>由此而来——相当于一张会员卡，持卡者享受打折和优先服务，所以许多人愿意花钱办卡。<b>居住证制度</b>让常住者享受部分公共服务；<b>积分落户制度</b>按学历、社保年限、住房等打分，达标者落户。</p>
+  <p><b>改革数据</b>：Jin与Zhang（2023）估计采取户籍改革的城市累计占比，2002年仅2.8%，2010年52%，2014年61%，2015年全国性改革后达到100%；Zhang等（2018）的落户门槛指数显示，高门槛的只有少数超大城市，大多数城市是低门槛。</p>
+  <div id="c3_hukou" class="chart chart-sm" style="height:280px"></div>
+  <p class="chart-note">数据来源：Jin and Zhang (2023)，课件第22页。</p>
+
+  <h2 class="sec"><span class="no">3.7</span>非正规就业</h2>
+  <div class="sec-rule"></div>
+  <p><b>标准就业</b>：全日制、无固定期限、受雇于单一雇主；<b>非标准就业</b>：小摊贩、临时工、零工。经济发展的过程伴随<b>正规化</b>。<b>广义的非正规就业</b>＝非正规部门＋正规部门里的非标准就业：总量近3亿，其中基于互联网平台的<b>六大新就业形态</b>约8千万人。劳动力市场的三元结构：务农、非正规就业、正规就业。</p>
+  <p><b>技术进步对劳动分工的影响</b>：制造业有自动化技术，服务业有互联网平台的中介作用——“<b>岗位</b>”被分解为“<b>任务</b>”，工作模块化：外卖骑手、网约车司机不是被一家公司“雇”在一个岗位上，而是接一单做一单。传统“劳动关系”被瓦解：劳务派遣、劳务外包、日结。<b>劳动力市场分层</b>：按所有制、技能水平、稳定程度、福利保障分成不同的层。</p>
+
+  <h2 class="sec"><span class="no">3.8</span>劳动力市场的摩擦与配置效率</h2>
+  <div class="sec-rule"></div>
+  <p>课件列出的<b>摩擦来源</b>：传统城市国有部门的刚性就业（长期低工资和冗员）；人事管理制度（档案、干部身份）；户籍制度（限制城乡与跨区域流动）；劳动法律法规（2004年最低工资规定、2008年劳动合同法、2010年社会保险法、2014年劳务派遣暂行条例）；其他干预（补贴新技术、补贴农业——耕地保护金、种粮补贴、农机补贴）。</p>
+  <p><b>摩擦的后果</b>：要素错配带来效率损失；非货币衡量的福利后果（失业影响健康、留守儿童问题）；劳动力市场非竞争性打击教育投资积极性——如果好工作靠关系而不是能力，念书的回报下降，家长就不愿在孩子教育上多投入。</p>
+
+  <h2 class="sec"><span class="no">3.9</span>本章总结</h2>
+  <div class="sec-rule"></div>
+  <div class="data box"><span class="tag">小结</span><p>从<b>要素配置</b>的视角理解中国经济发展：权利与配置效率；制造业大国的优势部分来自廉价而丰富的劳动力供给；进入21世纪后的结构性变化——刘易斯拐点、人口红利消失、技术进步改变工作性质、机器替代人力。下一讲转向土地要素与资本要素的配置。</p></div>
+  <div class="chnav" data-chnav></div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- ===== 视图：第四章 土地制度与城市化 (#ch4) ===== -->
+<!-- ===================================================== -->
+<section id="view-ch4" class="view" data-view="ch4">
+  <div class="wrap">
+  <div class="chcov">
+    <div class="ch-no">04</div>
+    <h1>土地制度与城市化：土地如何变成城市化的“第一桶金”</h1>
+    <p class="ch-sub">农村集体土地上使用权再配置解决了吃饭难题；国有土地上可转让的使用权，解决了城市化筹资难题。但产权安排，也埋下了今日收入分配与社会结构的基础。</p>
+    <div class="ch-tags"><span>农村困境</span><span>城乡土地产权</span><span>两条通道</span><span>土地资本化</span><span>土地财政</span><span>涨价归谁</span></div>
+  </div>
+
+  <h2 class="sec"><span class="no">4.1</span>接第二讲：农村发展的困境</h2>
+  <div class="sec-rule"></div>
+  <p>课件把农村的问题归结为四个方面，指出它们全都与<b>土地产权</b>有关：</p>
+  <ol class="prl">
+    <li><b>农业生产率提升缓慢</b><span>土地产权不稳定影响农业投资；小规模经营影响机械化与现代管理，缺乏<span class="term" data-d="规模越大、平均成本越低">规模经济</span>。随时可能被调走的承包地，没有人愿意花钱建灌溉渠。</span></li>
+    <li><b>农村非农产业发展困境</b><span>乡镇企业衰败；土地用途管制限制了工商业发展。</span></li>
+    <li><b>缺乏资本投入</b><span>农村金融欠发达。</span></li>
+    <li><b>城市化收益分配不公</b><span>土地征收补偿低。</span></li>
+  </ol>
+
+  <h2 class="sec"><span class="no">4.2</span>城乡土地产权现状</h2>
+  <div class="sec-rule"></div>
+  <p><b>城市：土地国有</b>——使用权清晰且可以转让；商品房拥有完整产权、可以转让，“地随房走”（买房即同时获得土地使用权）；大城市与小城镇有差别。</p>
+  <p><b>农村：土地集体所有</b>——农用地实行家庭承包（可能不定期调地，撂荒等情形下承包权不稳定），经营权可转让；“<span class="term" data-d="谁在用、谁就有一定权利，广泛存在于发展中国家的产权安排">基于使用的产权</span>”；建设用地分宅基地（按福利分配、地随房走）、公益用地、经营性建设用地（在村庄权力结构下分配、有限转让）；房屋方面农民拥有所有权和有限的转让权（一户一宅）。特点：<b>基于集体成员权分配实物使用权，缺乏转让权，难以作抵押物</b>。</p>
+  <div class="ana box"><span class="tag">类比</span><p>好比公司给每位员工分配一间宿舍，只能自己住、不能卖，也没法拿去向银行贷款。</p></div>
+  <p><b>土地利用结构</b>（全国各类土地占比）：未利用地27.8%、林地26.7%、牧草地23.2%、耕地14.3%、建设用地4.0%、其他农用地2.5%、园地1.5%。</p>
+  <div id="c4_landuse" class="chart chart-sm" style="height:290px"></div>
+  <p class="chart-note">数据来源：课件第5页全国土地利用结构。</p>
+  <p><b>2017年第三次土地调查</b>：在城镇村及工矿用地中，村庄用地2193.56万公顷占62.13%，城市用地522.19万公顷占14.79%，建制镇用地512.93万公顷占14.53%，采矿用地占6.92%，风景名胜及特殊用地占1.63%——<b>建设用地更多分布在农村</b>。</p>
+  <div id="c4_townland" class="chart chart-sm" style="height:270px"></div>
+  <p class="chart-note">数据来源：课件第5页2017年第三次土地调查（城镇村及工矿用地构成）。</p>
+
+  <h2 class="sec"><span class="no">4.3</span>农村土地产权制度的形成</h2>
+  <div class="sec-rule"></div>
+  <ul class="tl">
+    <li><span class="yr">1950年代</span><span class="ev">土地改革、土地集体化</span></li>
+    <li><span class="yr">1962年前后</span><span class="ev">《人民公社六十条》等：确立宅基地集体所有与社员使用权相分离、无偿使用且无期限、社员拥有房屋私有权的制度</span></li>
+    <li><span class="yr">1980年代初</span><span class="ev">集体所有、家庭承包</span></li>
+    <li><span class="yr">1980/90年代</span><span class="ev">乡镇企业兴起，形成大量经营性建设用地</span></li>
+    <li><span class="yr">2002</span><span class="ev">《农村土地承包法》：明确承包权和转让权，限定农业用途</span></li>
+    <li><span class="yr">2004</span><span class="ev">《土地管理法》：农民集体土地不得出让、转让或出租用于非农业建设（三种例外：自用、入股联营、破产兼并转移）</span></li>
+  </ul>
+  <p><b>背后的逻辑：土地提供保障</b>。<span class="term" data-d="土地作为‘命根子’强调稳定、不流动的功能">保障功能</span>与<b>财产功能</b>（可交易、可增值）相对：《乡土中国》描述的传统社会是前者——把家守住比把地卖掉更重要；但当子女都在城里安了家，祖屋更像一件可以变现的资产。国际比较有土地公有制、信托制。</p>
+
+  <h2 class="sec"><span class="no">4.4</span>城市土地产权制度的形成</h2>
+  <div class="sec-rule"></div>
+  <p><b>城市土地从私有到国有</b>：1947年《中国土地法大纲》和1954年宪法保护私有产权；1956年公私合营厂房赎买为国有、城市空地收归国有；1982年宪法确立城市土地属于国家所有。考量：为城市建设提供用地便利，建设用地一律<b>无偿划拨</b>（政府无偿分给用地单位，没有价格）。</p>
+  <div class="ana box"><span class="tag">类比</span><p>学校把教室无偿分给各班，用多少、用得好不好没人算账，所以没人珍惜。</p></div>
+  <p><b>使用权可转让：实践先于法律</b>。改革开放后非公有制发展、深圳与浦东开发开放，中国学习香港的<b>土地批租制</b>（政府把一定年限的使用权一次性出让、收取出让金，所有权仍归国家）。1987年上海先制定《上海市土地使用权有偿转让办法》作试点；1988年宪法规定土地使用权可以转让。<b>一级市场</b>（土地所有者向使用者供应土地）与<b>二级市场</b>（使用权再次交易）分开；一级开发流程：规划→指标→征收→补偿安置→收储→配套建设→出让。</p>
+
+  <h2 class="sec"><span class="no">4.5</span>农地转用的两条通道</h2>
+  <div class="sec-rule"></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin:16px 0;align-items:stretch">
+    <div style="flex:1 1 100%;background:#FAF6EE;border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center">
+      <b style="font-family:var(--serif);font-size:16px">集体所有农地</b>
+      <div style="font-size:13px;color:var(--gray);margin-top:2px">家庭承包 · 集体所有 · 用途受管制</div>
+    </div>
+    <div style="flex:1 1 46%;background:var(--gold-soft);border:1px solid #C9B477;border-radius:10px;padding:14px">
+      <b style="color:var(--gold);font-family:var(--serif)">通道1 · 自行转为建设用地（不受保护）</b>
+      <div style="font-size:13px;margin-top:6px">法律原则禁止，仅有三种例外：<b>自用</b>、<b>入股联营</b>、<b>破产兼并转移</b>。大量现实中的“法外用地”由此而来。</div>
+    </div>
+    <div style="flex:1 1 46%;background:var(--blue-soft);border:1px solid #9FB8C6;border-radius:10px;padding:14px">
+      <b style="color:var(--blue);font-family:var(--serif)">通道2 · 经过征收转为国有土地（合法）</b>
+      <div style="font-size:13px;margin-top:6px">所有权和用途通常同时改变；用途改变需要<b>建设用地指标</b>（上级分配的可转用额度）；2006年提出“<b>18亿亩耕地红线</b>”，加强用途管制。</div>
+    </div>
+  </div>
+  <p><b>数据</b>：全国耕地总量1996年19.51亿亩、2006年18.27亿亩；2006–2010年各城市建设用地指标差异极大，从略为负值到十几万公顷不等。学校规定每个年级每年只能新建几间教室——指标在谁手里，谁就掌握增长的机会。</p>
+
+  <h2 class="sec"><span class="no">4.6</span>土地资本化</h2>
+  <div class="sec-rule"></div>
+  <div class="def box"><span class="tag">定义</span><p><b>土地资本化</b>：经过市场交易使土地增值的过程。四大要点：①产权清楚，可以合法转让；②有需要现金的土地权益出让方；③有对未来土地收益预期较高且有现金支付能力的买方；④双方估值不同。与公司融资对比：公司用股票、债券换钱，土地则用使用权换钱。</p></div>
+  <p><b>为什么重要</b>：工业化、城市化需要巨量基础设施投资，这是发展中国家共同的难题；中国的实践是靠<b>土地资本化筹资</b>。法律演进的效果：对城市国有土地产权的细分和确认，促进土地市场发育、城市基础设施投资，发展出城市房地产市场，并带动地方财政收入增加——<b>重点是产权留给了地方政府</b>。</p>
+  <div class="ana box"><span class="tag">类比</span><p>小镇要修路却没钱。政府把一块地的使用权卖给开发商，用卖地的钱修了路；路通了周边地更值钱，下一块地卖得更贵，于是继续修路。</p></div>
+
+  <h2 class="sec"><span class="no">4.7</span>经济集聚、城市化与房地产</h2>
+  <div class="sec-rule"></div>
+  <p><b>城市化的动力：经济集聚</b>——经济活动密度提高能提升生产效率和福利水平，土地作为稀缺资源因此增值。<b>不动产增值的必要条件</b>：用途、位置和产权安排——同一块地，规划成商业用地比农田值钱，在地铁口比在郊外值钱，有可转让的产权比只有使用权更值钱。</p>
+  <p><b>中国城市房地产市场的发展</b>：房改前福利分房、不可转让；1994–1998年房改，商品化、停止福利分房；2002年经营性用地必须通过<b>招拍挂</b>（招标、拍卖、挂牌）出让；2004年土地供应作为宏观调控手段；之后经历“黄金20年”。</p>
+  <p><b>思考题：高房价带动高地价，还是高地价推高房价？</b>一种观点认为，开发商的出价由未来房价倒推，房价高了才有高地价；另一种认为，地方政府控制供地、拍卖竞价，“地王”预期会推高房价。课件把它留给读者。</p>
+  <p><b>数据</b>：住宅商品房平均销售价格2001年约2,017元/㎡、2020年约9,980元/㎡；2008年以来，一线城市房价从约1.2万元涨到2017年的近5万元，二线城市从约0.6万元涨到约1.6万元，三、四线城市涨幅小得多。</p>
+  <div id="c4_house" class="chart chart-sm" style="height:300px"></div>
+  <p class="chart-note">数据来源：课件第14–15页；一线、二线城市2008与2017年房价（万元/㎡），全国均价另见正文（2001年2,017元/㎡→2020年9,980元/㎡）。</p>
+
+  <h2 class="sec"><span class="no">4.8</span>土地涨价归谁</h2>
+  <div class="sec-rule"></div>
+  <div class="def box"><span class="tag">定义</span><p><b>经济租（阿尔钦）</b>：要素所有者实际收入超过其机会成本或保留收入的部分，即“超额收益”，通常与要素供给稀缺或低弹性相关。演唱会座位固定（供给无弹性），需求暴涨时黄牛赚到的就是经济租。</p></div>
+  <p><b>涨价归公（亨利·乔治）</b>：土地价值上升来自公共因素，而非土地主人的投入；孙中山主张“平均地权、限制买卖、涨价归公”。你家门口新修了地铁，房子涨价——这不是你的功劳，而是城市投资的成果，所以有人主张涨价应归公共。</p>
+  <p><b>现实规定</b>：国家为公共利益需要可依法征收或征用土地并给予补偿。但现实中征地范围扩展到非公共利益（如房地产开发）。补偿标准：<b>土地补偿费</b>为征收前三年平均年产值的6–10倍；每人<b>安置补助费</b>为4–6倍，最高不超过15倍；总和不超过30倍。</p>
+  <div class="ex box"><span class="tag">算一算</span><p>假设一亩地年产值1,500元，最高补偿也只有约4.5万元；而该地转为建设用地出让时价格可能高出数十倍——差额就是巨大的经济租，其分配成为矛盾焦点（教学假设，非课件数据）。</p></div>
+
+  <h2 class="sec"><span class="no">4.9</span>行为反应：农民与地方政府</h2>
+  <div class="sec-rule"></div>
+  <p><b>农民在合法框架外攫取租金</b>：通道2中租金分配不公，成为驱动农民选择通道1（自行转让）的巨大动力——</p>
+  <ul class="prl">
+    <li><b>工业</b><span>南海模式、昆山模式、义乌模式（常见的概括是农民以土地入股或集资建厂房出租，或依托自发小商品市场，各地不同）。</span></li>
+    <li><b>商业</b><span>北京大红门浙江村。</span></li>
+    <li><b>住宅</b><span>各地的城中村、小产权房。</span></li>
+  </ul>
+  <p><b>巨大的“法外世界”</b>：与“非正规经济”概念对应，例如深圳违法建筑占比很高。<b>三种非正规住宅</b>：</p>
+  <ul class="prl">
+    <li><b>城中村</b><span>位于城市当中、以“插花”形式存在；在土地和房屋产权、基础设施、公共服务、居民户籍、消费习惯上仍然是农村；为城市居民提供廉价居住地；可与发展中国家贫民窟对比。</span></li>
+    <li><b>小产权房</b><span>产权类似城中村，但建筑标准较高，对外出售。</span></li>
+    <li><b>棚户区</b><span>外观类似城中村，位于国有土地之上。</span></li>
+  </ul>
+  <p><b>地方政府的行为反应：以被动调整为主</b>。深圳1992年和2004年分别实施统征、统转，名义上实现全部土地国有化，但打击违法建筑成效不大，合法与法外的二元对立长期存在；全国层面政策法律调整缓慢——《土地管理法》修订花了15年。这与农村改革的政治经济学一致：<b>危机驱动、渐进、自发创新的合法化</b>。</p>
+
+  <h2 class="sec"><span class="no">4.10</span>改革试验与诺斯悖论</h2>
+  <div class="sec-rule"></div>
+  <p><b>主动调整</b>：近年改革试验，是把合法框架外的用地行为纳入合法框架的主动调整。<b>政府为什么愿意放弃城市土地垄断权利？</b>诺斯悖论：使统治者租金最大化的所有权结构，与降低交易费用、促进增长的有效制度之间存在持久矛盾。理解思路：<b>经济前提</b>——城市就业增加、城乡移民加速、土地的实际功能从保障向财产转变；<b>制度配套</b>——农村产权的稳固、城乡社会保障体系的建立。</p>
+  <div class="ana box"><span class="tag">类比</span><p>只有当村民有了医保和养老，即使把土地转出去，他们也不会担心失去最后的退路。</p></div>
+
+  <h2 class="sec"><span class="no">4.11</span>本章总结</h2>
+  <div class="sec-rule"></div>
+  <div class="data box"><span class="tag">小结</span><p>第二讲在农村集体土地上通过使用权再配置解决了吃饭难题；本讲在国有土地上发展出可转让的使用权，解决了城市化筹资难题——改变了“工业化超前、城市化滞后”的状况，造就了巨大的“<b>土地财政</b>”；但在城乡二元产权制度约束下，也留下城乡收入分配不公的遗憾。事前的制度安排往往产生意想不到的经济结果：如果产权安排有所不同，结果会怎样？</p></div>
+  <div class="chnav" data-chnav></div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- ===== 视图：第五章 财政体制 (#ch5) ===== -->
+<!-- ===================================================== -->
+<section id="view-ch5" class="view" data-view="ch5">
+  <div class="wrap">
+  <div class="chcov">
+    <div class="ch-no">05</div>
+    <h1>财政体制：分权与地方激励</h1>
+    <p class="ch-sub">财政体制作为约束，地方政府的收支行为随约束而变化：从吃大锅饭到分灶吃饭，从财政包干到分税制，再到土地财政与地方债务——“地方政府公司化”是怎样炼成的。</p>
+    <div class="ch-tags"><span>公共财政</span><span>财政分权</span><span>五阶段演变</span><span>分税制</span><span>预算外财政</span><span>土地财政</span><span>城投与债务</span></div>
+  </div>
+
+  <h2 class="sec"><span class="no">5.1</span>财政体制：责任与权力的划分</h2>
+  <div class="sec-rule"></div>
+  <div class="def box"><span class="tag">定义</span><p><b>公共财政（Public Finance）</b>：政府为市场提供公共服务的分配活动或经济活动，包括政府的收入、支出与其他经济行为。<b>财政体制</b>：公共财政的责任与权力的划分问题——分收入与支出两个方面，在各级公共部门之间、各级政府之间、公共部门与市场之间划分。参考：Wong and Bird (2008)、林双林《中国公共财政》（2025）。</p></div>
+  <p><b>2025年中国财政的规模</b>（摘自“2025年中央和地方预算执行情况”）：全国一般公共预算收入216,045亿元（其中税收176,363亿元、非税收入39,682亿元），支出287,396亿元，赤字56,600亿元；地方一般公共预算本级收入122,082亿元，中央对地方转移支付收入101,925亿元。全国政府性基金预算收入57,704亿元（主要是地方国有土地使用权出让收入下降所致）；国有资本经营预算收入8,546.95亿元；社会保险基金预算收入126,033.68亿元。2024年度国有资产：中央企业资产总额123.6万亿元、地方国有企业278.1万亿元；中央管理金融企业资产311.8万亿元、地方金融企业176.1万亿元。</p>
+  <div class="data box"><span class="tag">数据</span><p>把“四本预算”看作一户人家的四本账：一般公共预算（日常收支）、政府性基金预算（专项收入，含土地出让）、国有资本经营预算（国企上缴收益）、社会保险基金预算（社保收支）。全国性的“家底”有多大、钱从哪来、花到哪去，都在这四本账里。</p></div>
+
+  <h2 class="sec"><span class="no">5.2</span>财政分权</h2>
+  <div class="sec-rule"></div>
+  <div class="def box"><span class="tag">定义</span><p><b>财政分权</b>：政府的经济职责和相应的财政收支权力的下放——从中央到地方、从省市到县乡。多层级政府的组织结构有单一制与联邦制之分、<b>块块</b>（地方政府）主导与<b>条条</b>（行业部委）主导之分。</p></div>
+  <p><b>财政分权理论</b>：当各地对公共品的偏好存在差异时，由地方政府承担更多公共品提供职能可以提升社会福利——依据的是经济学原理：<b>激励、信息成本、规模经济</b>。在居民自由流动的前提下，“<b>用脚投票</b>”的机制可通过刺激区域政府间竞争、改善公共服务的供需匹配来提升效率。</p>
+  <p><b>分权的弊端</b>：地方保护主义、“<span class="term" data-d="地方政府为吸引要素而竞相降低税收与标准，导致公共服务与监管水平竞相下降">逐底竞争</span>”、地区差距拉大。</p>
+  <h3>财政分权之下中央政府的角色</h3>
+  <ul class="prl">
+    <li><b>降低地方保护主义</b><span>破除进入门槛与贸易壁垒、打破司法地方保护。</span></li>
+    <li><b>建立全国性监管标准</b><span>最低税率、排污标准、安全标准。</span></li>
+    <li><b>对流动要素施加中央税</b><span></span></li>
+    <li><b>区域间协调</b><span>补贴具有跨区域正外部性的公共品；对贫困地区进行财政转移支付。</span></li>
+  </ul>
+  <p><b>经济学原理</b>：让经济活动的边际成本等于边际收益——针对地方政府/地方官员，采用税收、补贴、处罚、提拔等手段；从跨层级外部性到跨部门外部性。思考：这些手段的本质是什么？</p>
+
+  <h2 class="sec"><span class="no">5.3</span>中国财政体制的演变：五个阶段</h2>
+  <div class="sec-rule"></div>
+  <ul class="tl">
+    <li><span class="yr">第一阶段 · 计划经济时期</span><span class="ev">高度集中、统一管理，内生于赶超战略；国营企业利税合一（企业收入直到1975年仍高于各项税收）；吃大锅饭；条条专政。动态调整反复循环：“一收就死，一死就放，一放就乱，一乱又收”——1951划分收支分级管理、1954以支定收、1958以收定支五年不变、1961回收权力、1966收支挂钩全额分成、1971–73定收定支收支包干、1973–75部分地区固定比例包干。</span></li>
+    <li><span class="yr">第二阶段 · 改革初期：分灶吃饭、财政包干</span><span class="ev">1976年起总额分成一年一变；1977年江苏固定比例包干（一定四年不变，多收多支、自求平衡）；1978年增收分成；1979年超收分成；1980年“划分收支、分级包干”（分成比例原则上5年不变）；1983年利改税、卷烟酒的工商税划为中央收入；1985年划分税种、核定收支、分级包干。1988年形成六种财政包干办法。</span></li>
+    <li><span class="yr">第三阶段 · 1994年分税制改革</span><span class="ev">颁布和修订各项税法；税收划分为中央、地方与共享三部分，建立独立的国税、地税局；渐进改革：以1993年为基数，中央从一省获得的增值税和消费税增量以30%返还该省。</span></li>
+    <li><span class="yr">第四阶段 · 2000–2014年：财政扩张</span><span class="ev">“以人为本”“和谐社会”，民生领域扩大政府支出责任；发展型地方政府：政绩追求带来资本性支出扩张；全社会税收负担上升；财权整体上移（转移支付上升、乡财县管、省直管县），地方政府财力不足。</span></li>
+    <li><span class="yr">第五阶段 · 综合财政改革（2012年后至今）</span><span class="ev">全面减税；2014年新预算法“开前门、堵后门”（允许地方发债、严控新增隐性债务）；2015年营改增；2017年后增加中央责任、国税地税合并。改革局限：事权与支出责任划分不清晰、稳增长下难以约束地方融资冲动、债务置换强化“城投信仰”。当前正处新一轮财税体制改革。</span></li>
+  </ul>
+
+  <h3>1988年形成的六种财政包干办法</h3>
+  <table class="tbl"><colgroup><col style="width:26%"><col style="width:74%"></colgroup>
+    <tr><th>办法</th><th>规则</th></tr>
+    <tr><td>总额分成</td><td>收入按固定比例留成</td></tr>
+    <tr><td>总额分成加增长分成</td><td>限额以下按固定比例留成；超过限额，留成比例提高</td></tr>
+    <tr><td>收入递增包干</td><td>按前一年收入确定限额；限额以下按固定比例留成，超过部分全部保留</td></tr>
+    <tr><td>定额上解</td><td>每年上交固定数额，其余保留</td></tr>
+    <tr><td>上解额递增包干</td><td>每年上交固定数额，并按约定逐年增加</td></tr>
+    <tr><td>定额补助</td><td>中央给予固定数额补助</td></tr>
+  </table>
+  <p><b>经济学原理</b>：财政包干之下，地方政府逐渐成为<b>剩余索取者</b>——多收多支的激励由此而来。但逐级承包的合约缺乏稳定性，地方政府用设立小金库、“藏富于企”来应对（把企业利润留在辖区，之后再慢慢收）。结果：财政收入占GDP比重下降，中央财政收入占比下降。</p>
+
+  <h3>1994年分税制：税种怎么分</h3>
+  <table class="tbl"><colgroup><col style="width:30%"><col style="width:34%"><col style="width:36%"></colgroup>
+    <caption>中央固定收入 / 地方固定收入 / 共享收入（课件列表）</caption>
+    <tr><th>中央固定</th><th>地方固定</th><th>共享</th></tr>
+    <tr><td>关税；海关代征消费税和增值税；消费税；中央企业所得税；银行和金融企业所得税；铁道、各银行总行、保险总公司集中缴纳的营业税等；中央企业上缴利润</td><td>营业税；地方企业所得税；地方企业上缴利润；个人所得税；城镇土地使用税；固定资产投资方向调节税；城市维护建设税；房产税、车船使用税、印花税、屠宰税、农牧业税、农业特产税、耕地占用税、契税、遗产与赠与税、土地增值税</td><td>增值税（中央75%）；资源税（海洋石油归中央，其他归地方）；证券交易税（中央50%）；所得税（中央60%）</td></tr>
+  </table>
+  <p><b>分税制的效果：财权上收、事权下放</b>。看各级政府财政收支占比（单位%）：收入端中央从1993年22%跃升到1998年50%，此后维持高位；支出端县乡从27%升到2013年46%——<b>中央收的钱多了，花钱最多的却是县乡</b>。</p>
+  <div id="c5_rev" class="chart chart-sm" style="height:270px"></div>
+  <div id="c5_exp" class="chart chart-sm" style="height:270px"></div>
+  <p class="chart-note">数据来源：课件第18页“各级政府财政收支占比”表（1993、1998、2002、2006、2010、2013）。</p>
+
+  <h2 class="sec"><span class="no">5.4</span>财政转移支付与预算外财政</h2>
+  <div class="sec-rule"></div>
+  <p><b>三类转移支付</b>：<b>一般性转移支付</b>（无条件、均等化，国际主流做法）；<b>税收返还</b>（分税制改革的配套）；<b>专项转移支付</b>（按项目申报、定向分配）。</p>
+  <p><b>预算外财政的传统——“要么给钱，要么给政策”</b>：给钱（转移支付）数额不够、限制性强；给政策则允许预算外资金存在，默许下级设立不与上级分享、甚至不让上级知情的“<b>小金库</b>”。</p>
+  <div class="def box"><span class="tag">定义</span><p><b>预算外财政</b>：未纳入正式预算管理、由地方政府自主支配的收入，包括国企利润留存、罚没、行政收费、摊派、提留、统筹等。特点：中央监督弱、地方自主性强。经济学逻辑：上级事前承诺不与下级争夺这块资金，构成对下级的<b>强激励</b>。1990年代末起设立各项政府性基金预算（民航基金、港口建设费、水利基金、土地出让收入、彩票），但直到2009年后才真正纳入预算管理，成为财政的“第二本账”。</p></div>
+
+  <h2 class="sec"><span class="no">5.5</span>土地财政的形成——上海的故事</h2>
+  <div class="sec-rule"></div>
+  <div class="ex box"><span class="tag">实例</span><p>1980年代，上海财政收入约80%上缴中央，分成比例不确定，地方积极性受影响；在加工贸易、乡镇企业的产业结构下财政收入波动大；外资进入对城市土地的长期使用权形成需求。上海学习香港土地批租制：1987年发布《上海市土地使用权有偿转让办法》（同年深圳“第一拍”）；1988年上海第一次土地使用权出让，同年宪法规定土地使用权可以转让。<b>1989年之后，低迷经济下决定开发浦东——中央给钱还是给政策？</b></p></div>
+  <div class="quote box"><span class="tag">引文</span><p>《朱镕基上海讲话实录》记载，1990年3月29日、4月2日和7日，上海市长朱镕基三次向到沪调研的副总理姚依林汇报：“首先一个是土地批租政策和土地级差地租的政策，这对上海是至关重要的两条政策……上海批租的收入如果还是按现在的办法上缴，上海是寸步难行，没法再搞了。批租收入是开发浦东的一个重要资金来源，所以希望……让上海先试点……就留给我们算了。”</p><em>——1990年4月18日，中央正式宣布浦东开发</em></div>
+  <p><b>转折点</b>：1994年分税制改革，中央上收财权；作为谈判筹码，<b>土地出让收入被留给地方</b>。土地财政由此成为可能。</p>
+
+  <h2 class="sec"><span class="no">5.6</span>地方财政激励的变迁</h2>
+  <div class="sec-rule"></div>
+  <ul class="tl">
+    <li><span class="yr">1980年代</span><span class="ev">财政承包制下追求留存的财政收入，形成地方保护主义</span></li>
+    <li><span class="yr">1990年代早期</span><span class="ev">依赖乡镇企业利税与地方国企利税，“藏富于企”</span></li>
+    <li><span class="yr">1994年</span><span class="ev">分税制减少增值税留存，地方转向营业税、农业税、财产类税收等地方税与预算外收入</span></li>
+    <li><span class="yr">1990年代末</span><span class="ev">基层财政困难，转移支付更重要，“跑部钱进”“钓鱼工程”</span></li>
+    <li><span class="yr">2002年</span><span class="ev">所得税分享改革，地方收入被拿走</span></li>
+    <li><span class="yr">2003年后</span><span class="ev">国企改制完成、取消农业税、土地出让要求招拍挂——土地收入变得更重要，房地产相关税收占比上升，形成<b>综合性土地财政</b></span></li>
+    <li><span class="yr">2008年后</span><span class="ev">财政刺激下信贷扩张，地方融资平台（城投）举债成为重要财政手段</span></li>
+  </ul>
+  <p><b>经济学原理：地方政府“公司化”</b>——把政府看作一家追求自身财源与政绩的“公司”，其经济行为随财政约束的变化而变化。</p>
+
+  <h2 class="sec"><span class="no">5.7</span>宏观税负与当前改革</h2>
+  <div class="sec-rule"></div>
+  <p><b>2015年税收结构</b>（总收入12.5万亿元，占GDP 18.5%）：增值税31,109亿元、企业所得税27,134亿元、营业税19,313亿元、进口增值税和消费税12,533亿元、消费税10,542亿元、个人所得税8,617亿元、契税3,899亿元、土地增值税3,832亿元、城市维护建设税3,886亿元、印花税2,553亿元、车船税2,793亿元、城镇土地使用税2,142亿元、耕地占用税2,097亿元、非税收入27,347亿元。</p>
+  <p><b>近年来宏观税负逐年下降</b>：2025年，税收占GDP比重12.6%，一般公共预算收入占GDP比重15.4%，广义政府收入占GDP比重24.4%。</p>
+  <div id="c5_tax" class="chart chart-sm" style="height:300px"></div>
+  <p class="chart-note">数据来源：课件第17页（2015年税收收入结构）与第24页（2025年宏观税负）。</p>
+  <p><b>第五阶段改革的局限（“雷声大、雨点小”）</b>：公共服务事权、支出责任与资金来源划分不清晰；稳增长目标下持续实施积极财政政策，难以约束地方融资冲动；债务置换带来道德风险、强化“城投信仰”；隐性担保债务形成兑付压力，倒逼地方持续举债周转。</p>
+
+  <h2 class="sec"><span class="no">5.8</span>地方政府经济行为的多样性</h2>
+  <div class="sec-rule"></div>
+  <p><b>收入端</b>：常规财政——税收、国有资产处置、租金、政府债；<b>准财政</b>——依托城投平台进行债务融资、公私合营（PPP）。<b>支出端</b>：基础公共品供给与基础设施建设；一般性营商环境改善；针对特定区域的经济活动补贴（开发区）；针对特定行业、特定公司的管制或补贴扶持；普通国企参与市场竞争；设立产业引导基金进行股权投资撬动商业投资；其他产业政策。</p>
+  <p><b>思考：政府与市场的边界在哪里？</b></p>
+
+  <h2 class="sec"><span class="no">5.9</span>本章总结</h2>
+  <div class="sec-rule"></div>
+  <div class="data box"><span class="tag">小结</span><p>权利再配置视角：农村改革是集体土地使用权的再配置，人口与劳动力是人力要素的再配置，土地与城市化是国有土地上可转让使用权的发育，本讲是<b>地方政府财政收支权利的发育</b>。主线：财政体制作为约束，地方政府的经济行为随约束而变化。国际比较：中国财政分权程度高（支出分权程度最高）。</p></div>
+  <div class="chnav" data-chnav></div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- ===== 视图：第六章 金融改革 (#ch6) ===== -->
+<!-- ===================================================== -->
+<section id="view-ch6" class="view" data-view="ch6">
+  <div class="wrap">
+  <div class="chcov">
+    <div class="ch-no">06</div>
+    <h1>金融改革：从抑制到深化</h1>
+    <p class="ch-sub">银行主导的金融体系怎样为赶超战略服务？金融抑制之下，资金如何在正规体系之外寻找出路？利率市场化、资本市场与私募股权，又如何把金融推向“深化与宽化”。</p>
+    <div class="ch-tags"><span>银行体系</span><span>金融抑制</span><span>民间金融</span><span>影子银行</span><span>利率市场化</span><span>资本市场</span><span>地方债务</span></div>
+  </div>
+
+  <h2 class="sec"><span class="no">6.1</span>金融体系简介</h2>
+  <div class="sec-rule"></div>
+  <p><b>金融的作用</b>：金融机构发挥中介作用，把储蓄转为投资。<b>直接融资与间接融资</b>：资本市场（直接）与银行（间接）之别，直接融资的风险高于间接融资；发达经济体以直接融资为主，资本市场和金融产品多样化。<b>金融深化</b>：金融体系在多大程度上发挥动员资金、服务实体经济的作用？度量指标是金融总资产/GDP、M2/GDP。中国的金融体系<b>不断深化但不够“宽化”</b>——规模很大，但产品与渠道相对单一。</p>
+
+  <h2 class="sec"><span class="no">6.2</span>正规金融——银行体系的建立</h2>
+  <div class="sec-rule"></div>
+  <p><b>计划经济时期</b>：财政部门是经济运转的核心，投融资由财政主导；资金统一调配，金融中介作用很小——1978年，<b>中国人民银行占据全国93%的金融资产</b>，人民银行更像是“国家的会计”。</p>
+  <ul class="tl">
+    <li><span class="yr">1979年后</span><span class="ev">从人民银行分拆出四大国有商业银行：农业、中国、建设、工商银行</span></li>
+    <li><span class="yr">1983年</span><span class="ev"><b>拨改贷</b>：对国企的财政拨款改为银行贷款，金融市场成为补贴国企的主渠道</span></li>
+    <li><span class="yr">1987年起</span><span class="ev">陆续成立股份制商业银行（招商、中信等）</span></li>
+    <li><span class="yr">1994年</span><span class="ev">成立三家政策性银行：国家开发银行、进出口银行、农业发展银行</span></li>
+    <li><span class="yr">1996年</span><span class="ev">农村信用社脱离农业银行；城市信用社改造为城市商业银行</span></li>
+    <li><span class="yr">2001年</span><span class="ev">加入WTO后逐步开放外资银行的人民币业务与经营地域限制</span></li>
+    <li><span class="yr">2003年后</span><span class="ev">注资四大国有商业银行、剥离不良资产、改革上市</span></li>
+    <li><span class="yr">2007年</span><span class="ev">成立交通银行、邮政储蓄银行（原邮政储蓄体系改制）</span></li>
+    <li><span class="yr">2014年</span><span class="ev">成立民营银行：微众、网商、中关村银行</span></li>
+  </ul>
+
+  <h2 class="sec"><span class="no">6.3</span>金融抑制</h2>
+  <div class="sec-rule"></div>
+  <div class="def box"><span class="tag">定义</span><p><b>金融抑制</b>：政府通过利率管制、汇率扭曲等金融干预手段抑制金融体系发展。逻辑是压低投资成本、补贴资本密集型的重工业；“拨改贷”之后，金融市场成为补贴国企的主渠道。</p></div>
+  <p><b>以低利率为主要特征</b>：在以银行为主导的体系下，储户没有其他储蓄和投资渠道；高通胀年份居民存款实际利率为负（1987–1989、1992–1996、2010–2011）。<b>低成本资金从家庭流向国有企业，银行和国有企业是受益者。</b></p>
+  <p><b>金融抑制的后果</b>：金融欠发达——不利于经济增长；失衡——低效率投资、产业结构失衡、外部失衡；收入分配——家庭部门财富被无形剥夺；银行形成对利差收入的依赖。<b>正面效应</b>：金融稳定。国际比较：英美、德国、日韩的金融体系各有不同路径。</p>
+
+  <h2 class="sec"><span class="no">6.4</span>正规金融体系之外——民间金融</h2>
+  <div class="sec-rule"></div>
+  <p><b>逻辑</b>：金融抑制之下，资金在正规金融体系外寻求高收益。供给侧是储户寻求高收益存款渠道；需求侧是民营企业规模小、位置分散、不确定性大，面临<b>信贷歧视</b>、被排除在正规银行信贷之外，存在<b>融资缺口</b>。信用基础依赖<b>社会网络和熟人信用</b>——如孟加拉国格莱珉银行、中国产业集群发展早期的民间融资、信用合作社。互联网时代发展出P2P借贷，后于2020年全面退出。Allen等（2005）发现：非银行、非市场来源的、基于声誉和关系的信贷，支持了中国增长最快的私营部门。</p>
+  <div class="ex box"><span class="tag">实例 · 标会</span><p><b>标会</b>（互助会、抬会、打会、楼梯会）是民间自发的信用融资，主要在广东、福建、台湾、温州等闽南语系地区，通常建立在亲情、乡情、友情等血缘地缘关系上。发起人叫“会主”，成员叫“会脚”。以10人百元会为例：第一次开标时10个会脚各缴100元，各自在纸上写一个利息标准，出价最高者中标，当场拿走1000元；此后他每月缴130元（100元本金＋30元利息），所有会脚都轮一遍后标会结束——中标者用100元“博”来1000元，本质是以高息换取即时融资。1986年春，温州标会大规模资金链断裂，近1000人被非法关押、8万多户家庭破产；进入21世纪仍屡有报道。</p></div>
+
+  <h2 class="sec"><span class="no">6.5</span>影子银行</h2>
+  <div class="sec-rule"></div>
+  <div class="def box"><span class="tag">定义</span><p><b>影子银行</b>：传统银行系统以外的各种金融中介业务，通常以非银行金融机构为载体，对金融资产的信用、流动性和期限等风险因素进行转换，提供流动性和信贷转化，扮演“类银行”的角色——包括银行理财业务、委托贷款；信托公司、小额贷款、融资担保、金融租赁；以及民间金融中的地下钱庄、民间借贷、典当、网贷、不备案私募等。国际比较：美国1970年代出现影子银行（如货币市场共同基金）。</p></div>
+  <div class="ex box"><span class="tag">实例 · 农村合作基金会</span><p>人民公社改制过程中，对集体资产清理，建立合作基金会，“清财收欠，以欠转贷”。1988年全国农民人均纯收入545元（1980年仅191元），农户希望闲置资金找到既安全又高收益的出路；同时乡镇企业和个体私营经济资金需求增长。1985年中央1号文件提出“放活农村金融政策”，农行1986年发文不干预农村合作经济组织内部融资。基金会向当地群众吸纳股金（实际就是存款），利率高达银行同档期利率的2–3倍，与农村信用社争业务；后因大量坏账、巨大金融风险，1990年代末被全面清理整顿。</p></div>
+  <div class="ex box"><span class="tag">实例 · 信托投资公司</span><p>1979年成立中国国际信托投资公司（中信集团前身），从事贷款、外汇、实业投资甚至高息揽储，被称为“金融百货公司”。1988年高峰期达745家，背景各异（中央政府、商业银行分拆、地方政府+预算外资金），为地方政府项目提供了大量资金。1998年广东国际信托投资公司破产清算，资产负债率高达168%，到2010年债权清偿率仅18%；信托业先后五次清理整顿，2001年《信托法》颁布后缩减到68家并转型。</p></div>
+  <div class="ex box"><span class="tag">实例 · 委托贷款</span><p>委托贷款由政府部门、企事业单位作为委托人提供资金，银行按委托人确定的贷款对象、用途、金额、期限、利率代为发放。有特权获得廉价资金的企业，把资金输送给没有特权的企业。Allen等（2016）：委托贷款是中国影子银行最大的组成部分之一，信贷紧缩时增加；分为关联贷款与非关联贷款，后者利率远高于官方贷款利率，主要流向房地产业；国企通过委托贷款套利。</p></div>
+  <p><b>影子银行的后果</b>：把资金转移到更有效率的生产部门，部分矫正了资本错配；为私营部门特别是中小企业提供信贷支持（“创业影子”）；但逃避监管，积累风险。</p>
+
+  <h2 class="sec"><span class="no">6.6</span>金融去管制</h2>
+  <div class="sec-rule"></div>
+  <p>在金融抑制下价格受到管制：央行制定几百项利率，利率工具发挥产业政策的作用。<b>利率市场化改革</b>的次序是“先外币后本币，先贷款后存款，先长期大额再短期小额”：2013年放开人民币贷款利率，创立<b>贷款基础利率（LPR）</b>报价机制；2015年放开存款利率；2020年民间借贷司法保护上限定为LPR的4倍。</p>
+  <p><b>外汇市场化改革</b>：1994年汇率并轨、经常项目可兑换；2005年实施有管理的浮动汇率；始终保持资本项目管制。<b>监管放松与市场准入</b>：2001年WTO外资银行、2009年股份制银行分支机构审批权下放、2014年民营银行试点、2015年《存款保险条例》。总体方向是逐步放松金融抑制、促进金融<b>深化与宽化</b>——从商业银行到证券、保险、信托等更多金融产品，并发展数字金融。</p>
+
+  <h2 class="sec"><span class="no">6.7</span>地方财政与影子银行</h2>
+  <div class="sec-rule"></div>
+  <p><b>地方政府—国有银行—国有企业的“三位一体”模式</b>：地方政府依托国有银行作为金融杠杆，帮助辖区内国企获得大规模信贷资源，国企则为地方政府贡献利润和税收。1990年代后期金融整顿后，2004年后城商行成为地方政府新的金融杠杆，助推钢铁、煤炭、房地产、光伏等行业的投资过热与产能过剩。</p>
+  <p><b>地方政府融资平台的兴起</b>：发源自1998年国开行支持下的“<b>芜湖模式</b>”。城投公司从进行城市基础设施投资，逐渐演变为地方政府的“资产包”，起到绕开预算法、为地方政府投融资的作用，成为<b>影子财政</b>——投资市政、特许经营、土地开发；融资靠银行贷款、市场发债和各类影子银行渠道，政府提供<b>隐性担保</b>，构成<b>政府隐性债务</b>。</p>
+  <div class="ex box"><span class="tag">实例 · 4万亿与影子银行的扩张</span><p>2009年实施4万亿财政刺激计划，其中大约3万亿为新增银行贷款。债务资金大量流入房地产开发商和地方政府融资平台（基建）——考虑到房地产通过土地财政为地方财政做贡献，也可部分算作流入财政体系。“后四万亿”时期，融资平台债务展期与再融资压力导致持续资金需求，助推影子银行在2012年之后急速扩张：Allen等（2023）发现超过一半的信托资金流向国企；Chen等（2020）发现约2/3的城投债被银行表外理财产品购买——<b>挤占民营企业的资金来源</b>。影子银行与地方债务相互依存，构成中国系统性金融风险的主要来源（原理4：财政金融体系支撑大规模长期投资，但软约束扭曲资金配置与风险定价）。</p></div>
+  <div id="c6_stimulus" class="chart chart-sm" style="height:280px"></div>
+  <p class="chart-note">示意图：2009年4万亿财政刺激计划中，约3万亿为新增银行贷款（课件第21页）。</p>
+
+  <h2 class="sec"><span class="no">6.8</span>资本市场发展</h2>
+  <div class="sec-rule"></div>
+  <p><b>债券市场</b>：1981年起发行国债；1983年起发行企业债（国企）；2007年起发行公司债（非国企）。市场结构以政府信用为依托的品种为主（国债、地方债、政策性金融债、央行票据约60%），政府之外主体发行的企业债、公司债、短融、中票、可转债约30%，银行间同业存单约10%。企业债务治理政策：2016年“供给侧去杠杆”、2020年房地产“三道红线”。</p>
+  <p><b>股票市场：为国有部门筹资而生</b>——1990年12月上交所、1991年5月深交所成立；前十年90%的上市公司是国有企业。</p>
+  <div class="def box"><span class="tag">定义</span><p><b>股权分置</b>：大量国有股权不流通（2006年改革前近2/3不流通）。非流通股东实际掌握企业控制权，采取账面价值计价，与二级市场股价脱钩；“大小非”即大额、小额非流通股（国有股、法人股）。</p></div>
+  <p><b>制度特征</b>：上市审批严格、额度管理、流通性差。金融系统以银行为主导、间接融资为主；直接融资风险高，需要保护投资者，体现“<b>父爱主义</b>”——供给受限，上市后非流通股有锁定期。衍生问题：严进宽出、监管弱、上市时间长、估值高、募集资金有限，许多公司赴香港和海外上市募资。国际比较：投资者风险自担、注册制、无锁定期。</p>
+  <p><b>消除双轨制：2005–2007年股权分置改革</b>。由于流通股票规模较小，游资只需小部分资金就可控制股价，造成股价大幅波动、不能反映公司基本面、扭曲市场定价机制——二级市场价格失真的根源就在“双轨”。改革办法：非流通股股东向流通股股东支付对价，由两类股东协商。双轨制同样广泛存在于债券市场、外汇市场，以及A/B股市场分割。</p>
+  <p><b>放松准入、加强监管、完善退市</b>：注册制改革；扩大覆盖范围——科创板、新三板、北交所。</p>
+  <p><b>私募股权市场</b>：融资方式要与经济活动相匹配——创新周期长、不确定性大、失败率高，适合的融资方式是<b>风险投资（VC）与私募股权（PE）</b>。市场参与者包括资本提供者<b>LP</b>（有限合伙人）与管理者<b>GP</b>（普通合伙人）；2007年《合伙企业法》后，“有限合伙”成为中国市场的主导结构。运作环节“募—投—管—退”，退出途径是并购与IPO。</p>
+
+  <h2 class="sec"><span class="no">6.9</span>本章总结</h2>
+  <div class="sec-rule"></div>
+  <div class="data box"><span class="tag">小结</span><p><b>银行主导</b>的金融体系；<b>双轨制</b>下的金融抑制与金融去管制；资金在正规体系之外融通（民间金融、影子银行）；渐进式改革——利率市场化、债券市场发展、股票市场从审批转向注册制、股权从分置走向全流通、私募股权市场发展。延伸思考：数字金融的作用。</p></div>
+  <div class="chnav" data-chnav></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div><h4>课程信息</h4>北京大学国家发展研究院《中国经济专题》（2026秋）<br>任课教师：李力行 · 二教101 · 每周三18:40–20:30<br>考核：读书笔记10% · 期中30%（前八讲）· 期末60%</div>
+      <div><h4>参考书</h4>林毅夫《解读中国经济》<br>周其仁《产权与中国变革》<br>巴里·诺顿《中国经济：转型与增长》</div>
+      <div><h4>使用提示</h4>正文加粗红点词=学术概念，点击看定义。<br>“实例/类比/数据”卡片按内容类别出现。<br>图表数据均注明出处与口径。</div>
+    </div>
+    <div class="note">本网站内容依据课程课件与课堂内容整理编写，仅供课程学习参考。书中数据、引文与案例均标注来源；如需引用，请以原课件与原始文献为准。整理者不对整理过程中的转述与概括承担文献校勘责任。</div>
+  </div>
+</footer>
+
+<div id="pop" role="tooltip"><span class="p-t"></span><span class="p-b"></span></div>
+
+<script>
+/* ================= 章节元信息 ================= */
+const CHAPTERS=[
+  {id:"ch1",no:"01",name:"绪论：用经济学原理读懂中国"},
+  {id:"ch2",no:"02",name:"农村改革：产权、激励与合约"},
+  {id:"ch3",no:"03",name:"人口与劳动力：从无限供给到刘易斯拐点"},
+  {id:"ch4",no:"04",name:"土地制度与城市化"},
+  {id:"ch5",no:"05",name:"财政体制：分权与地方激励"},
+  {id:"ch6",no:"06",name:"金融改革：从抑制到深化"}
+];
+
+/* ================= 路由 ================= */
+const views=document.querySelectorAll(".view");
+const navLinks=document.querySelectorAll("#nav a");
+function go(v){
+  views.forEach(x=>x.classList.toggle("active",x.dataset.view===v));
+  navLinks.forEach(a=>a.classList.toggle("active",a.dataset.view===v));
+  const idx=CHAPTERS.findIndex(c=>c.id===v);
+  if(idx>-1){
+    const el=document.querySelector("#view-"+v);
+    const cn=el.querySelector(".chnav");
+    if(cn){
+      cn.innerHTML=(idx>0?`<a href="#/${CHAPTERS[idx-1].id}" data-nav="prev"><i>← 上一讲</i>${CHAPTERS[idx-1].no} · ${CHAPTERS[idx-1].name}</a>`:'<span></span>')+
+        (idx<CHAPTERS.length-1?`<a href="#/${CHAPTERS[idx+1].id}" data-nav="next"><i>下一讲 →</i>${CHAPTERS[idx+1].no} · ${CHAPTERS[idx+1].name}</a>`:'<span></span>');
+    }
+  }
+  initCharts(v);
+  closeSidebar();
+  window.scrollTo(0,0);
+  document.title=v==="home"?"中国经济专题 · 六讲学习网站":`第${(CHAPTERS.find(c=>c.id===v)||{}).no||""}讲 ${(CHAPTERS.find(c=>c.id===v)||{}).name||""} · 中国经济专题`;
+}
+window.addEventListener("hashchange",()=>{const h=location.hash.replace(/^#\/?/,"");go(CHAPTERS.some(c=>c.id===h)?h:"home");});
+/* 卡片点击进入章节 */
+document.querySelectorAll(".card[data-goto]").forEach(c=>c.addEventListener("click",()=>location.hash="#/"+c.dataset.goto));
+/* 移动端侧栏 */
+const sb=document.getElementById("sidebar"),mask=document.getElementById("mask");
+document.getElementById("burger").addEventListener("click",()=>{sb.classList.add("open");mask.classList.add("show");});
+function closeSidebar(){sb.classList.remove("open");mask.classList.remove("show");}
+mask.addEventListener("click",closeSidebar);
+
+/* ================= 术语弹层 ================= */
+const pop=document.getElementById("pop");
+function showPop(term,e){
+  pop.querySelector(".p-t").textContent=term.textContent;
+  pop.querySelector(".p-b").textContent=term.dataset.d||"";
+  pop.classList.add("show");
+  const r=term.getBoundingClientRect();
+  const pr=pop.getBoundingClientRect();
+  let x=r.left, y=r.bottom+10;
+  if(x+pr.width>innerWidth-10)x=Math.max(10,innerWidth-pr.width-10);
+  if(y+pr.height>innerHeight-10)y=r.top-pr.height-10;
+  pop.style.left=x+"px";pop.style.top=y+"px";
+}
+function hidePop(){pop.classList.remove("show");}
+document.addEventListener("click",e=>{
+  const t=e.target.closest(".term");
+  if(t){e.stopPropagation();if(pop.classList.contains("show")&&pop._t===t){hidePop();pop._t=null;}else{pop._t=t;showPop(t,e);}}
+  else if(!e.target.closest("#pop"))hidePop();
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape")hidePop();
+  if(e.key==="Enter"&&e.target.classList&&e.target.classList.contains("term")){showPop(e.target,e);}
+});
+window.addEventListener("scroll",hidePop,{passive:true});
+
+/* ================= 图表：懒加载注册表 ================= */
+const CHARTS={};
+let inited={};
+function initCharts(v){
+  const root=document.querySelector("#view-"+v);
+  if(!root)return;
+  root.querySelectorAll(".chart").forEach(el=>{
+    const id=el.id;
+    if(!id||inited[id])return;
+    const fn=CHARTS[id];
+    if(fn){fn(el);inited[id]=true;}
+  });
+}
+window.addEventListener("resize",()=>{
+  Object.values(CHARTS).forEach(()=>{/* echarts 实例在 CHARTS 定义时挂到 el._chart */});
+});
+/* 通用：注册图表时自动挂载实例并处理 resize */
+function regChart(id,optFn){
+  CHARTS[id]=function(el){el._chart=echarts.init(el);el._chart.setOption(optFn(el));};
+}
+window.addEventListener("resize",()=>{Object.values(inited).forEach(()=>{});views.forEach(v=>{v.querySelectorAll(".chart").forEach(el=>{if(el._chart)el._chart.resize();});});});
+
+/* ================= 图表定义 ================= */
+const PALETTE={vermilion:"#A8321F",blue:"#34566B",gold:"#9C7A2C",green:"#4A6B55",purple:"#5A4A63",teal:"#2E6E6E",ink:"#24241F",gray:"#8A8370",paper:"#EFE8D6"};
+const axisOpt={axisLine:{lineStyle:{color:"#8A8370"}},axisLabel:{color:"#5c584d",fontSize:12},splitLine:{lineStyle:{color:"rgba(138,131,112,.25)"}},nameTextStyle:{color:"#5c584d"}};
+
+/* —— 第一章 —— */
+regChart("c1_share",()=>({
+  tooltip:{trigger:"axis"},
+  legend:{data:["GDP占世界比重(%)","人均GDP相对世界平均(世界=1)"],textStyle:{color:"#5c584d",fontSize:12},top:0},
+  grid:{left:45,right:45,top:40,bottom:28},
+  xAxis:{type:"category",data:["1700","1820","1900","1950","2001","2015"],...axisOpt},
+  yAxis:[{type:"value",name:"占比(%)",max:40,...axisOpt},{type:"value",name:"倍数",max:1.4,...axisOpt}],
+  series:[
+    {name:"GDP占世界比重(%)",type:"line",data:[22,33,11,5,12,20],smooth:true,lineStyle:{width:3,color:PALETTE.vermilion},itemStyle:{color:PALETTE.vermilion},symbolSize:8,areaStyle:{color:"rgba(168,50,31,.12)"}},
+    {name:"人均GDP相对世界平均(世界=1)",type:"line",yAxisIndex:1,data:[0.98,0.90,0.43,0.21,0.59,1.16],smooth:true,lineStyle:{width:3,color:PALETTE.blue,type:"dashed"},itemStyle:{color:PALETTE.blue},symbolSize:8}
+  ]
+}));
+regChart("c1_cnindia",()=>({
+  tooltip:{trigger:"axis",axisPointer:{type:"shadow"}},
+  legend:{data:["中国","印度"],textStyle:{color:"#5c584d",fontSize:12},top:0},
+  grid:{left:110,right:30,top:40,bottom:24},
+  xAxis:{type:"value",...axisOpt},
+  yAxis:{type:"category",data:["成人识字率(%)","高等教育入学率(%)","制造业占GDP比重(%)","制造业就业占比(%)"],...axisOpt},
+  series:[
+    {name:"中国",type:"bar",data:[65.5,0.7,40.0,17.3],barWidth:10,itemStyle:{color:PALETTE.vermilion}},
+    {name:"印度",type:"bar",data:[40.8,4.9,17.0,13.0],barWidth:10,itemStyle:{color:PALETTE.blue}}
+  ]
+}));
+regChart("c1_sanxian",()=>({
+  tooltip:{trigger:"axis",axisPointer:{type:"shadow"}},
+  grid:{left:50,right:24,top:20,bottom:30},
+  xAxis:{type:"category",data:["1961–1963","1965–1966","1970","1973–1978"],...axisOpt},
+  yAxis:{type:"value",name:"家/年",...axisOpt},
+  series:[{type:"bar",data:[20,120,220,50],barWidth:34,itemStyle:{color:PALETTE.vermilion,borderRadius:[4,4,0,0]},label:{show:true,position:"top",color:"#5c584d",fontSize:11,formatter:function(p){return p.value+" 家/年"}}}]
+}));
+regChart("c1_income",()=>({
+  tooltip:{trigger:"axis",axisPointer:{type:"shadow"}},
+  legend:{data:["农业","工业","其他"],textStyle:{color:"#5c584d",fontSize:12},top:0},
+  grid:{left:45,right:24,top:36,bottom:26},
+  xAxis:{type:"category",data:["1952","1957","1962","1965","1970","1975","1978"],...axisOpt},
+  yAxis:{type:"value",name:"%",...axisOpt},
+  series:[
+    {name:"农业",type:"bar",stack:"s",data:[57.7,46.8,48.1,46.2,40.4,37.8,32.8],itemStyle:{color:PALETTE.gold}},
+    {name:"工业",type:"bar",stack:"s",data:[19.5,28.3,32.8,36.4,41.0,46.0,49.4],itemStyle:{color:PALETTE.vermilion}},
+    {name:"其他",type:"bar",stack:"s",data:[22.8,24.5,19.2,17.4,18.6,16.2,17.8],itemStyle:{color:"#B9A876"}}
+  ]
+}));
+regChart("c1_emp",()=>({
+  tooltip:{trigger:"axis"},
+  legend:{data:["农业","工业","其他"],textStyle:{color:"#5c584d",fontSize:12},top:0},
+  grid:{left:45,right:24,top:36,bottom:26},
+  xAxis:{type:"category",data:["1952","1957","1965","1978"],...axisOpt},
+  yAxis:{type:"value",name:"%",...axisOpt},
+  series:[
+    {name:"农业",type:"line",data:[83.5,81.2,81.6,73.3],smooth:true,lineStyle:{width:3,color:PALETTE.gold},itemStyle:{color:PALETTE.gold},symbolSize:8},
+    {name:"工业",type:"line",data:[6.0,5.9,6.4,12.5],smooth:true,lineStyle:{width:3,color:PALETTE.vermilion},itemStyle:{color:PALETTE.vermilion},symbolSize:8},
+    {name:"其他",type:"line",data:[10.5,12.9,12.0,14.2],smooth:true,lineStyle:{width:3,color:PALETTE.blue},itemStyle:{color:PALETTE.blue},symbolSize:8}
+  ]
+}));
+
+/* —— 第二章 —— */
+regChart("c2_growth",()=>({
+  tooltip:{trigger:"axis",axisPointer:{type:"shadow"}},
+  legend:{data:["农业总体","种植业","粮食","棉花","畜牧业"],textStyle:{color:"#5c584d",fontSize:12},top:0},
+  grid:{left:45,right:24,top:36,bottom:26},
+  xAxis:{type:"category",data:["1952–1978","1978–1984","1984–1987"],...axisOpt},
+  yAxis:{type:"value",name:"年均增长率(%)",...axisOpt},
+  series:[
+    {name:"农业总体",type:"bar",data:[2.9,7.7,4.1],itemStyle:{color:PALETTE.vermilion},barWidth:8},
+    {name:"种植业",type:"bar",data:[2.5,5.9,1.4],itemStyle:{color:PALETTE.gold},barWidth:8},
+    {name:"粮食",type:"bar",data:[2.4,4.8,-0.2],itemStyle:{color:PALETTE.blue},barWidth:8},
+    {name:"棉花",type:"bar",data:[2.0,17.7,-12.9],itemStyle:{color:PALETTE.green},barWidth:8},
+    {name:"畜牧业",type:"bar",data:[4.0,10.0,8.5],itemStyle:{color:PALETTE.purple},barWidth:8}
+  ]
+}));
+
+/* —— 第三章 —— */
+regChart("c3_hukou",()=>({
+  tooltip:{trigger:"axis"},
+  grid:{left:50,right:24,top:26,bottom:30},
+  xAxis:{type:"category",data:["2002","2003","2004","2005","2008","2010","2012","2014","2015"],...axisOpt},
+  yAxis:{type:"value",name:"累计占比(%)",max:100,...axisOpt},
+  series:[{name:"采取户籍改革的城市占比",type:"line",data:[2.8,14,30,36,45,52,56,61,100],smooth:true,lineStyle:{width:3,color:PALETTE.blue},itemStyle:{color:PALETTE.blue},symbolSize:7,areaStyle:{color:"rgba(52,86,107,.14)"}}]
+}));
+
+/* —— 第四章 —— */
+regChart("c4_landuse",()=>({
+  tooltip:{trigger:"item",formatter:"{b}: {c}%"},
+  legend:{orient:"vertical",right:0,top:12,textStyle:{color:"#5c584d",fontSize:11}},
+  series:[{type:"pie",radius:["38%","62%"],center:["38%","55%"],data:[
+    {name:"未利用地",value:27.8,itemStyle:{color:"#C9BFAA"}},
+    {name:"林地",value:26.7,itemStyle:{color:PALETTE.green}},
+    {name:"牧草地",value:23.2,itemStyle:{color:"#A8B58C"}},
+    {name:"耕地",value:14.3,itemStyle:{color:PALETTE.gold}},
+    {name:"建设用地",value:4.0,itemStyle:{color:PALETTE.vermilion}},
+    {name:"其他农用地",value:2.5,itemStyle:{color:"#7E9BA6"}},
+    {name:"园地",value:1.5,itemStyle:{color:"#C98A6B"}}
+  ],label:{fontSize:11,color:"#5c584d"},labelLine:{lineStyle:{color:"#8A8370"}}}]
+}));
+regChart("c4_townland",()=>({
+  tooltip:{trigger:"axis",axisPointer:{type:"shadow"}},
+  grid:{left:70,right:40,top:20,bottom:24},
+  xAxis:{type:"value",...axisOpt},
+  yAxis:{type:"category",data:["风景名胜及特殊用地","采矿用地","建制镇用地","城市用地","村庄用地"],...axisOpt},
+  series:[{type:"bar",data:[1.63,6.92,14.53,14.79,62.13],barWidth:16,itemStyle:{color:function(p){return p.dataIndex===4?PALETTE.vermilion:PALETTE.blue},borderRadius:0},label:{show:true,position:"right",color:"#5c584d",fontSize:11,formatter:"{c}%"}}]
+}));
+regChart("c4_house",()=>({
+  tooltip:{trigger:"axis",axisPointer:{type:"shadow"}},
+  legend:{data:["2008年","2017年"],textStyle:{color:"#5c584d",fontSize:12},top:0},
+  grid:{left:45,right:24,top:36,bottom:26},
+  xAxis:{type:"category",data:["一线城市","二线城市"],...axisOpt},
+  yAxis:{type:"value",name:"万元/㎡",...axisOpt},
+  series:[
+    {name:"2008年",type:"bar",data:[1.2,0.6],barWidth:26,itemStyle:{color:"#A9B4A0"}},
+    {name:"2017年",type:"bar",data:[5.0,1.6],barWidth:26,itemStyle:{color:PALETTE.vermilion}}
+  ]
+}));
+
+/* —— 第五章 —— */
+regChart("c5_rev",()=>({
+  tooltip:{trigger:"axis"},
+  legend:{data:["中央","省级","地市","县乡"],textStyle:{color:"#5c584d",fontSize:11},top:0},
+  grid:{left:45,right:24,top:34,bottom:26},
+  xAxis:{type:"category",data:["1993","1998","2002","2006","2010","2013"],...axisOpt},
+  yAxis:{type:"value",name:"收入占比(%)",...axisOpt},
+  series:[
+    {name:"中央",type:"line",data:[22,50,55,53,51,47],smooth:true,lineStyle:{width:3,color:PALETTE.vermilion},itemStyle:{color:PALETTE.vermilion},symbolSize:7},
+    {name:"省级",type:"line",data:[13,10,42,12,11,11],smooth:true,lineStyle:{width:2.5,color:PALETTE.gold},itemStyle:{color:PALETTE.gold},symbolSize:6},
+    {name:"地市",type:"line",data:[34,20,16,17,16,16],smooth:true,lineStyle:{width:2.5,color:PALETTE.green},itemStyle:{color:PALETTE.green},symbolSize:6},
+    {name:"县乡",type:"line",data:[32,20,17,19,23,27],smooth:true,lineStyle:{width:2.5,color:PALETTE.blue},itemStyle:{color:PALETTE.blue},symbolSize:6}
+  ]
+}));
+regChart("c5_exp",()=>({
+  tooltip:{trigger:"axis"},
+  legend:{data:["中央","省级","地市","县乡"],textStyle:{color:"#5c584d",fontSize:11},top:0},
+  grid:{left:45,right:24,top:34,bottom:26},
+  xAxis:{type:"category",data:["1993","1998","2002","2006","2010","2013"],...axisOpt},
+  yAxis:{type:"value",name:"支出占比(%)",...axisOpt},
+  series:[
+    {name:"中央",type:"line",data:[34,29,31,25,18,15],smooth:true,lineStyle:{width:3,color:PALETTE.vermilion,type:"dashed"},itemStyle:{color:PALETTE.vermilion},symbolSize:7},
+    {name:"省级",type:"line",data:[11,19,20,18,17,16],smooth:true,lineStyle:{width:2.5,color:PALETTE.gold,type:"dashed"},itemStyle:{color:PALETTE.gold},symbolSize:6},
+    {name:"地市",type:"line",data:[29,24,21,23,23,23],smooth:true,lineStyle:{width:2.5,color:PALETTE.green,type:"dashed"},itemStyle:{color:PALETTE.green},symbolSize:6},
+    {name:"县乡",type:"line",data:[27,28,29,34,43,46],smooth:true,lineStyle:{width:2.5,color:PALETTE.blue,type:"dashed"},itemStyle:{color:PALETTE.blue},symbolSize:6}
+  ]
+}));
+regChart("c5_tax",()=>({
+  tooltip:{trigger:"item",formatter:"{b}: {c} 亿元"},
+  grid:{left:120,right:40,top:16,bottom:24},
+  xAxis:{type:"value",...axisOpt},
+  yAxis:{type:"category",data:["增值税","企业所得税","营业税","非税收入","进口增值税和消费税","消费税","个人所得税","城市维护建设税","契税","土地增值税","印花税","车船税","城镇土地使用税","耕地占用税"],...axisOpt},
+  series:[{type:"bar",data:[31109,27134,19313,27347,12533,10542,8617,3886,3899,3832,2553,2793,2142,2097],barWidth:10,itemStyle:{color:function(p){return p.dataIndex<2?PALETTE.vermilion:"#A9A186"},borderRadius:0},label:{show:true,position:"right",color:"#5c584d",fontSize:10,formatter:"{c}"}}]
+}));
+
+/* —— 第六章 —— */
+regChart("c6_stimulus",()=>({
+  tooltip:{trigger:"item",formatter:"{b}: {c} 万亿元"},
+  legend:{bottom:0,textStyle:{color:"#5c584d",fontSize:12}},
+  series:[{type:"pie",radius:["42%","64%"],center:["50%","44%"],data:[
+    {name:"新增银行贷款",value:3,itemStyle:{color:PALETTE.vermilion}},
+    {name:"其他财政资金",value:1,itemStyle:{color:PALETTE.gold}}
+  ],label:{fontSize:13,color:"#3c3b33",formatter:"{b}\n{c} 万亿"},labelLine:{lineStyle:{color:"#8A8370"}}}]
+}));
+
+/* ================= 初始化 ================= */
+(function(){
+  const h=location.hash.replace(/^#\/?/,"");
+  go(CHAPTERS.some(c=>c.id===h)?h:"home");
+})();
+</script>
+</body>
+</html>
