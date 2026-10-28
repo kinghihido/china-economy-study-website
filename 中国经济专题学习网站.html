@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>中国经济专题 · 六讲学习网站</title>
-<meta name="description" content="据北京大学国家发展研究院《中国经济专题》（2026年秋季学期，李力行）第一至第六讲课件整理的学习网站：关键概念加粗并附定义，每个现象配生动实例。">
+<title>中国经济专题 · 七讲学习网站</title>
+<meta name="description" content="据北京大学国家发展研究院《中国经济专题》（2026年秋季学期，李力行）第一至第七讲课件整理的学习网站：关键概念加粗并附定义，每个现象配生动实例。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23A8321F'/%3E%3Ctext x='32' y='44' font-size='38' font-family='serif' fill='%23F7F2E8' text-anchor='middle'%3E%E7%BB%8F%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://miaoda.feishu.cn">
 <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
@@ -29,6 +29,8 @@
   --purple-soft:#ECE7EE;
   --teal:#2E6E6E;         /* 青绿 */
   --teal-soft:#E0ECEC;
+  --sienna:#8A5A3B;       /* 赭褐 */
+  --sienna-soft:#F0E7DF;
   --gray:#6E6A5E;
   --line:#D9CFB8;
   --dark:#1E211D;         /* 玄墨(封面/页脚) */
@@ -156,6 +158,9 @@ h3{font-family:var(--serif);font-weight:600;font-size:19px;margin:26px 0 8px;lin
 .card .no{font-family:var(--serif);font-weight:700;color:var(--cc,var(--vermilion));font-size:13px;letter-spacing:.1em}
 .card h3{font-size:18px;margin:6px 0 4px;font-weight:700}
 .card p{font-size:13px;color:var(--gray);margin:0;line-height:1.7}
+.card.plain{cursor:default}
+.card.plain:hover{transform:none;box-shadow:none}
+.cards.row3{grid-template-columns:1fr}
 .sect{padding:34px 0 6px}
 .sect h2{font-family:var(--serif);font-weight:700;font-size:24px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .sect h2::before{content:"";width:6px;height:22px;background:var(--vermilion);border-radius:2px}
@@ -186,6 +191,7 @@ footer .note{font-size:12px;color:#8A8370;border-top:1px solid rgba(217,207,184,
   .hero h1{font-size:52px}
   .stats{grid-template-columns:repeat(3,1fr);gap:12px}
   .cards{grid-template-columns:repeat(2,1fr)}
+  .cards.row3{grid-template-columns:repeat(3,1fr)}
   .flow{grid-template-columns:auto 1fr auto 1fr auto 1fr auto;align-items:stretch;gap:6px}
   .flow .arrow{align-self:center;padding:0 2px}
   .flow .node{display:flex;flex-direction:column;justify-content:center}
@@ -230,6 +236,7 @@ footer .note{font-size:12px;color:#8A8370;border-top:1px solid rgba(217,207,184,
     <a href="#/ch4" data-view="ch4"><span class="num">04</span>土地制度与城市化</a>
     <a href="#/ch5" data-view="ch5"><span class="num">05</span>财政体制：分权与地方激励</a>
     <a href="#/ch6" data-view="ch6"><span class="num">06</span>金融改革：从抑制到深化</a>
+    <a href="#/ch7" data-view="ch7"><span class="num">07</span>工业化：从乡镇企业到产业集群</a>
   </nav>
   <div class="foot">北京大学国家发展研究院<br>《中国经济专题》2026秋 · 学习整理</div>
 </aside>
@@ -239,7 +246,7 @@ footer .note{font-size:12px;color:#8A8370;border-top:1px solid rgba(217,207,184,
 <header id="topbar">
   <button id="burger" aria-label="打开目录"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#24241F" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
   <svg class="seal" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="10" fill="#A8321F"/><text x="32" y="45" font-size="40" font-family="Noto Serif SC,serif" fill="#F7F2E8" text-anchor="middle">经</text></svg>
-  <span class="t-title">中国经济专题 · 六讲学习网站</span>
+  <span class="t-title">中国经济专题 · 七讲学习网站</span>
 </header>
 
 <main id="main">
@@ -251,7 +258,7 @@ footer .note{font-size:12px;color:#8A8370;border-top:1px solid rgba(217,207,184,
   <div class="hero">
     <svg class="seal" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="10" fill="#A8321F"/><text x="32" y="45" font-size="40" font-family="Noto Serif SC,serif" fill="#F7F2E8" text-anchor="middle">经</text></svg>
     <h1>中国经济专题</h1>
-    <p class="sub">六讲学习网站。据北京大学国家发展研究院《中国经济专题》（2026年秋季学期，李力行）第一至第六讲课件整理编写：<b>关键学术概念加粗并附定义</b>，每一个现象与行为都配上生动的实例，帮你把课件读成真正属于自己的知识。</p>
+    <p class="sub">七讲学习网站。据北京大学国家发展研究院《中国经济专题》（2026年秋季学期，李力行）第一至第七讲课件整理编写：<b>关键学术概念加粗并附定义</b>，每一个现象与行为都配上生动的实例，帮你把课件读成真正属于自己的知识。</p>
     <div class="meta">
       <span>每周三 18:40–20:30 · 二教101</span>
       <span>期中考 11月11日 · 期末考 2027年1月6日</span>
@@ -274,7 +281,7 @@ footer .note{font-size:12px;color:#8A8370;border-top:1px solid rgba(217,207,184,
     </div>
 
     <div class="sect">
-      <h2>六讲地图 <small>点击进入各章</small></h2>
+      <h2>七讲地图 <small>点击进入各章</small></h2>
       <div class="cards">
         <div class="card" data-goto="ch1" style="--cc:var(--vermilion)"><div class="no">第 01 讲 · 绪论</div><h3>用经济学原理读懂中国</h3><p>课程怎么学、经济学工具箱、千年经济史、李约瑟之谜，以及改革前夜的起点。</p></div>
         <div class="card" data-goto="ch2" style="--cc:var(--gold)"><div class="no">第 02 讲 · 农村改革</div><h3>产权、激励与合约</h3><p>统购统销、集体化与大饥荒，包产到户如何让激励回到农户手中，改革的政治经济学。</p></div>
@@ -282,11 +289,12 @@ footer .note{font-size:12px;color:#8A8370;border-top:1px solid rgba(217,207,184,
         <div class="card" data-goto="ch4" style="--cc:var(--green)"><div class="no">第 04 讲 · 土地制度与城市化</div><h3>土地如何变成城市化的“第一桶金”</h3><p>两条农地转用通道、土地资本化、土地财政、涨价归谁，以及农民与政府的博弈。</p></div>
         <div class="card" data-goto="ch5" style="--cc:var(--purple)"><div class="no">第 05 讲 · 财政体制</div><h3>分权与地方激励</h3><p>财政分权理论、五阶段演变、1994分税制、预算外财政与土地财政的形成。</p></div>
         <div class="card" data-goto="ch6" style="--cc:var(--teal)"><div class="no">第 06 讲 · 金融改革</div><h3>从金融抑制到金融深化</h3><p>银行主导体系、金融抑制、民间金融与影子银行、利率市场化与资本市场。</p></div>
+        <div class="card" data-goto="ch7" style="--cc:var(--sienna)"><div class="no">第 07 讲 · 工业化</div><h3>从乡镇企业到产业集群</h3><p>发展理论、重工业优先、乡镇企业、适宜产权、产业集群与开发区、产业政策，以及过早去工业化。</p></div>
       </div>
     </div>
 
     <div class="sect">
-      <h2>六个关键数字 <small>先建立整体印象</small></h2>
+      <h2>八个关键数字 <small>先建立整体印象</small></h2>
       <div class="stats">
         <div class="stat"><div class="v">33%</div><div class="l">1820年中国GDP占世界比重达历史高点（麦迪森数据）</div></div>
         <div class="stat"><div class="v">1700–3000万</div><div class="l">1959–1961年大饥荒的死亡人数估算区间</div></div>
@@ -294,6 +302,8 @@ footer .note{font-size:12px;color:#8A8370;border-top:1px solid rgba(217,207,184,
         <div class="stat"><div class="v">1994</div><div class="l">分税制改革：中央上收财权，土地收入留给地方</div></div>
         <div class="stat"><div class="v">93%</div><div class="l">1978年中国人民银行占全国金融资产的比例</div></div>
         <div class="stat"><div class="v">4万亿</div><div class="l">2009年财政刺激计划，其中约3万亿为新增银行贷款</div></div>
+        <div class="stat"><div class="v">150万</div><div class="l">1993年中国乡镇企业数，职工5200万、工业产出占全国27%</div></div>
+        <div class="stat"><div class="v">214个</div><div class="l">1992年国家级（70）与省级（144）经济开发区合计</div></div>
       </div>
     </div>
 
@@ -334,7 +344,7 @@ footer .note{font-size:12px;color:#8A8370;border-top:1px solid rgba(217,207,184,
 
     <div class="sect">
       <h2>全书复习自测 <small>先写下你的答案，再回正文对照</small></h2>
-      <details class="qa"><summary>第一～六讲综合自测（点击展开）</summary><div class="inner">
+      <details class="qa"><summary>第一～七讲综合自测（点击展开）</summary><div class="inner">
         <ol>
           <li>为什么说1700年的中国是“大国也是不穷的国家”，而1950年则是“人口大国、人均极低”？</li>
           <li>李约瑟之谜的五类解释是什么？各有什么局限？</li>
@@ -350,6 +360,9 @@ footer .note{font-size:12px;color:#8A8370;border-top:1px solid rgba(217,207,184,
           <li>金融抑制的逻辑是什么？谁是受益者、谁受损？</li>
           <li>影子银行为什么在中国迅速扩张？它和地方政府债务怎样互相依存？</li>
           <li>股权分置改革之前，为什么股价不能反映公司基本面？</li>
+          <li>为什么说乡镇企业的“模糊产权”是转型期的适宜制度？红帽子企业解决了什么问题？</li>
+          <li>产业集群如何通过马歇尔外部性降低创业门槛？用“0→1、1→N、N→Q”解释一个你熟悉的集群。</li>
+          <li>产业政策的两类经济学依据是什么？围绕中国的产业政策，支持和反对的各有哪些理由？</li>
         </ol>
       </div></details>
     </div>
@@ -1015,6 +1028,150 @@ footer .note{font-size:12px;color:#8A8370;border-top:1px solid rgba(217,207,184,
   </div>
 </section>
 
+<!-- ===================================================== -->
+<!-- ===== 视图：第七章 工业化 (#ch7) ===== -->
+<!-- ===================================================== -->
+<section id="view-ch7" class="view" data-view="ch7">
+  <div class="wrap">
+  <div class="chcov">
+    <div class="ch-no">07</div>
+    <h1>工业化：从乡镇企业到产业集群</h1>
+    <p class="ch-sub">后发国家靠什么完成工业化？从发展理论的五种讲法，到计划经济重工业优先、农村工业化与乡镇企业，再到产业集群、经济开发区与产业政策——以及全球化时代中国工业化的新故事。</p>
+    <div class="ch-tags"><span>发展理论</span><span>重工业优先</span><span>乡镇企业</span><span>适宜产权</span><span>产业集群</span><span>经济开发区</span><span>产业政策</span><span>过早去工业化</span></div>
+  </div>
+
+  <h2 class="sec"><span class="no">7.1</span>发展中国家工业化：五种讲法</h2>
+  <div class="sec-rule"></div>
+  <p>课件从五条线索回答同一个问题——后发国家怎样才能工业化？每一条都是一种“处方”，也各有适用边界。</p>
+
+  <p><b>罗斯托的经济成长阶段论</b>：美国经济史学家罗斯托（Walt Rostow，1960）在《经济成长的阶段》中把发展分成五个阶段——传统社会、起飞前提、<span class="term" data-d="投资率显著上升、主导产业出现并带动增长，经济从此自我维持增长的转折期">起飞</span>、走向成熟、大众高消费时代。所谓“起飞”，是储蓄与投资占国民收入的比例显著上升、主导产业出现并带动增长的关键时期。</p>
+
+  <div class="ana box"><span class="tag">类比</span><p>起飞像火箭脱离地心引力的那一瞬间：推力必须持续超过重量，一旦进入轨道就能自己飞——传统社会里投资率太低，就像推力总是不够的火箭。</p></div>
+
+  <p><b>中心—外围理论</b>：普雷维什等发展经济学家认为，世界经济分为“中心”（工业化的发达国家）与“外围”（提供初级产品的发展中国家）。<span class="term" data-d="世界分为中心与外围两级：外围为中心提供原料与市场，贸易条件长期恶化，依附于中心的发展格局">中心—外围（依附）</span>格局下，外围靠出口原料换工业品，贸易条件长期恶化，工业化难以自动发生。</p>
+
+  <p><b>后发优势理论</b>：格申克龙（Alexander Gerschenkron）提出，后发国家可以通过借鉴先行者已经成熟的<b>技术</b>与<b>制度</b>来加速追赶，而不必重走试错的老路——这就是<span class="term" data-d="后发国家借鉴先行者成熟的技术与制度、缩短摸索过程而实现的加速追赶">后发优势</span>。类比：抄近路走别人已修好的高速公路，当然比自己从荒地里开一条新路快。</p>
+
+  <p><b>进口替代 vs 出口导向</b>：进口替代是<span class="term" data-d="用本地生产替代进口工业品，以保护国内幼稚产业的工业化战略">用本地生产替代进口</span>，先满足国内市场再谈出口；出口导向是<span class="term" data-d="以出口劳动密集型产品参与国际分工、发挥比较优势的工业化战略">先出口挣外汇</span>，再逐步升级产业。</p>
+
+  <div class="ex box"><span class="tag">实例 · 巴西汽车与东亚四小龙</span><p><b>进口替代</b>：巴西长期对国内汽车、耐用消费品实行高关税保护，本地组装替代进口，工业“看起来建起来了”，但因缺乏国际竞争，效率低、成本高，后期靠外债维持，1980年代陷入“失去的十年”。<b>出口导向</b>：东亚四小龙靠出口劳动密集型产品起步，再沿产业链升级——同样从纺织做起，一个面向国际市场被“逼着”改进，一个关起门来被“护着”不变，结果大不相同。</p></div>
+
+  <p><b>雁阵理论</b>：1994年世界银行在总结东亚经验时提出的“<span class="term" data-d="产业像雁阵一样按各国发展水平依次转移承接：日本带头，四小龙、东盟、中国依次承接，形成梯级追赶</span>”模式——产业在各国之间依次转移承接，如同雁群排成梯队飞行。</p>
+
+  <h2 class="sec"><span class="no">7.2</span>计划经济：重工业优先</h2>
+  <div class="sec-rule"></div>
+  <p>中国计划经济时期选择了<b>重工业优先发展</b>的赶超战略。课件给出三点理由：苏联经验的示范；重工业具有<span class="term" data-d="投资或生产对第三方产生的、市场未定价的好处，如技术知识外溢到其他企业">技术和知识外部性</span>且对国防重要；进口替代的愿望。但这一战略与当时的<b>要素禀赋</b>矛盾：重工业周期长、收效慢、机器依赖进口、资本密集度高，而当时中国最丰富的是劳动力、最稀缺的是资本。</p>
+
+  <div class="ana box"><span class="tag">类比</span><p>一户人家劳动力很多、资金很少，却偏要建一座需要巨额投资的工厂——必然捉襟见肘。用稀缺的资本去干最“吃资本”的行业，代价是挤压农业与轻工业。</p></div>
+
+  <div class="data box"><span class="tag">数据 · 三线建设</span><p><b>三线建设</b>（1964年起）：出于国防考虑，国家把大批军工与重工业企业迁往内陆“三线”地区。企业建立时间分布：1961–1963年每年仅约二十家，1965–1966年升至约一百至一百四十余家，1970年达到约220家的峰值，之后回落到每年几十家。</p></div>
+
+  <h2 class="sec"><span class="no">7.3</span>计划期的数据：工业化超前，就业结构滞后</h2>
+  <div class="sec-rule"></div>
+  <p>1952到1978年，工业在国民收入中的份额大幅上升，农业份额大幅下降；可就业结构几乎没动——<b>产值结构像工业国，劳动力却大多还在种地</b>，这就是“工业化超前、就业结构滞后”。</p>
+
+  <table class="tbl"><colgroup><col style="width:22%"><col style="width:13%"><col style="width:13%"><col style="width:13%"><col style="width:13%"><col style="width:13%"><col style="width:13%"></colgroup>
+    <caption>国民收入份额（%）</caption>
+    <tr><th>部门</th><th>1952</th><th>1957</th><th>1962</th><th>1965</th><th>1975</th><th>1978</th></tr>
+    <tr><td>农业</td><td class="hl">57.7</td><td>46.8</td><td>48.1</td><td>46.2</td><td>37.8</td><td>32.8</td></tr>
+    <tr><td>工业</td><td>19.5</td><td>28.3</td><td>32.8</td><td>36.4</td><td>46.0</td><td class="hl">49.4</td></tr>
+    <tr><td>其他</td><td>22.8</td><td>24.5</td><td>19.2</td><td>17.4</td><td>16.2</td><td>17.8</td></tr>
+  </table>
+
+  <table class="tbl"><colgroup><col style="width:22%"><col style="width:13%"><col style="width:13%"><col style="width:13%"><col style="width:13%"><col style="width:13%"><col style="width:13%"></colgroup>
+    <caption>就业结构（%）</caption>
+    <tr><th>部门</th><th>1952</th><th>1957</th><th>1962</th><th>1965</th><th>1975</th><th>1978</th></tr>
+    <tr><td>农业</td><td class="hl">83.5</td><td>81.2</td><td>82.1</td><td>81.6</td><td>77.2</td><td>73.3</td></tr>
+    <tr><td>工业</td><td>6.0</td><td>5.9</td><td>6.6</td><td>6.4</td><td>9.9</td><td>12.5</td></tr>
+    <tr><td>其他</td><td>10.5</td><td>12.9</td><td>11.3</td><td>12.0</td><td>12.9</td><td>14.2</td></tr>
+  </table>
+
+  <div id="c7_dual" class="chart chart-sm"></div>
+  <p class="chart-note">数据来源：课件第22页“国民收入份额占比”与“就业结构”表；左轴为工业占国民收入份额，右轴为农业就业占比——两条线越分越开，正是“产值转工业、劳动力留在农业”的写照。</p>
+
+  <h2 class="sec"><span class="no">7.4</span>农村工业化：乡镇企业</h2>
+  <div class="sec-rule"></div>
+  <p>改革以后，工业化在农村找到了一条“离土不离乡”的路：<b>乡镇企业</b>——由乡镇、村集体或个人兴办的非农企业，被邓小平称为“异军突起”。</p>
+
+  <div class="data box"><span class="tag">数据 · 1993年的乡镇企业</span><p><b>150万家</b>乡镇企业，职工<b>5200万</b>人，工业产出占全国<b>27%</b>。构成上按“5万乡镇×平均8.2家 + 80万村×平均1.4家”推算：乡镇办约<b>41万家</b>、村办约<b>112万家</b>。</p></div>
+
+  <div id="c7_towns" class="chart chart-sm"></div>
+  <p class="chart-note">构成图为按上述口径的推算值，非课件原表精确数（课件给出合计150万家及乡镇/村数量与均值）。</p>
+
+  <div class="cards row3">
+    <div class="card plain" style="--cc:var(--gold)"><div class="no">苏南模式</div><h3>集体主导</h3><p>苏锡常一带依托上海国企的技术与订单，以乡镇（村）集体企业为主体，“集体办厂、政府背书”。</p></div>
+    <div class="card plain" style="--cc:var(--blue)"><div class="no">温州模式</div><h3>家庭作坊</h3><p>温州人多地少、远离大工业，靠家庭作坊与专业市场起家，产权极其清晰，“前店后厂、千家万户”。</p></div>
+    <div class="card plain" style="--cc:var(--teal)"><div class="no">珠三角模式</div><h3>外资带动</h3><p>珠三角紧邻港澳，靠“三来一补”承接港台加工订单，外资、出口导向、来料加工是其标签。</p></div>
+  </div>
+
+  <h2 class="sec"><span class="no">7.5</span>适宜产权：红帽子与模糊产权</h2>
+  <div class="sec-rule"></div>
+  <p>为什么改革早期“产权不清”的乡镇企业反而能崛起？课件用两组对比讲清楚：</p>
+
+  <table class="tbl"><colgroup><col style="width:24%"><col style="width:38%"><col style="width:38%"></colgroup>
+    <caption>国有 vs 私营 vs 乡镇：谁适合当时的中国农村？</caption>
+    <tr><th>企业类型</th><th>核心问题</th><th>解决之道</th></tr>
+    <tr><td>国有企业</td><td><span class="term" data-d="所有者（国家）把经营委托给官员与经理，监督困难、激励不足的制度安排">委托代理</span>链条长：国家—官员—经理层层代理，盈亏与个人利益脱钩，软约束下缺乏成本意识</td><td>城市里靠计划与下指标维持，农村则鞭长莫及</td></tr>
+    <tr><td>私营企业</td><td>改革开放早期产权保护不完善，<span class="term" data-d="私营企业财富被基层干部以摊派、平调、没收等方式侵占的风险">被掠夺的风险</span>高，不敢做大做强</td><td>挂靠集体，用“红帽子”寻求保护，但代价是产权模糊</td></tr>
+    <tr><td>乡镇企业</td><td>名义集体所有、实际由经营者掌控，产权<span class="term" data-d="所有者与经营者之间的控制权与收益权边界不清楚的状态">模糊</span></td><td>模糊产权让经营者同时获得集体“保护伞”与个人“剩余索取权”，在特定环境下反而是适宜安排</td></tr>
+  </table>
+
+  <div class="def box"><span class="tag">定义</span><p><b>红帽子</b>：私营企业挂靠在集体或国有单位名下、对外以“集体企业”身份经营的做法。收益权名义归集体，实际利润大多归创业者——用模糊产权换保护。</p></div>
+
+  <div class="ex box"><span class="tag">实例</span><p>20世纪80年代江浙一带许多个体工商户注册为“村办厂”“校办厂”：交一笔“管理费”换一块集体牌子，税务、贷款、签约都好办得多。等到90年代产权改革，这些企业又纷纷“摘帽”改回私营——红帽子是特定制度环境下的过渡形态。</p></div>
+
+  <h2 class="sec"><span class="no">7.6</span>产业集群与经济开发区</h2>
+  <div class="sec-rule"></div>
+  <p><b>产业集群</b>：同一产业及其关联企业在特定地理范围内的集聚。集聚之所以值钱，是因为<b>马歇尔外部性</b>——单个企业决定不了、却被整个集群分享的好处。</p>
+
+  <div class="def box"><span class="tag">定义</span><p><b>马歇尔外部性</b>（Alfred Marshall）：产业集群带来的三类外部经济——①<b>劳动力蓄水池</b>：熟练工人在厂与厂之间流动，企业容易招人、工人不怕失业；②<b>中间投入品共享</b>：面料、辅料、机器、维修都有专门供应商，小厂不必自己全包；③<b>知识与技术溢出</b>：款式、工艺、机器用法在密集交往中迅速传播。</p></div>
+
+  <div class="ana box"><span class="tag">类比 · 一个镇的羊毛衫集群</span><p>张三想开一家羊毛衫厂：单独一人，他得自己找工人、囤原料、买机器、跑客户，样样外包不出去，起步极难。但在羊毛衫小镇里（数百家厂集聚，见 Zhang et al., 2007 的研究），熟练工人随时可招、原料一条街就能配齐、新款一上架同行立刻模仿改良、订单做不完可以转包给邻居——创业门槛被整个集群一起抬高了，一个人也能把厂开起来。</p></div>
+
+  <p><b>集群形成的三个阶段</b>：<span class="term" data-d="从无到有：靠特殊禀赋、能人示范或外部订单点燃第一个工厂">0→1</span>，<span class="term" data-d="从有到多：外部性与模仿让同行业者跟进复制，集群规模扩大">1→N</span>，<span class="term" data-d="从多到优：竞争加剧倒逼质量与品牌升级，集群由量变走向质变">N→Q</span>。羊毛衫、袜业、打火机、五金等“块状经济”都走过这条路径。</p>
+
+  <p><b>经济开发区：基于位置的产业政策</b>。国家通过设立开发区，把基础设施、土地指标、税收优惠与招商服务集中投放到特定区位。时间线如下：</p>
+
+  <ul class="tl">
+    <li><span class="yr">1979</span><span class="ev">蛇口工业区设立</span><span class="note">招商局在深圳创办，中国最早成片开发的对外经济区，“时间就是金钱”的口号从这里传出</span></li>
+    <li><span class="yr">1990</span><span class="ev">上海外高桥保税区成立</span><span class="note">配合浦东开发开放，率先试点自由贸易政策</span></li>
+    <li><span class="yr">1992</span><span class="ev">开发区大扩张：国家级70个＋省级144个＝214个</span><span class="note">邓小平南方谈话后各地竞相申报设立开发区</span></li>
+    <li><span class="yr">1994</span><span class="ev">苏州工业园区开建</span><span class="note">中国与新加坡政府合作项目，借鉴新加坡规划与招商经验，后成高端制造重镇</span></li>
+    <li><span class="yr">2006</span><span class="ev">开发区总量增至661个</span><span class="note">国家清理整顿后重新核定的国家级/省级开发区名单</span></li>
+  </ul>
+
+  <div class="data box"><span class="tag">数据 · 开发区的“两头”</span><p>1979年只有蛇口1个开发区，1992年南方谈话后一年内增至214个（国家级70＋省级144），2006年核定的开发区合计达<b>661个</b>。开发区既是增长引擎，也伴随“圈地”“重复建设”的批评——这正是产业政策争论的微观缩影。</p></div>
+
+  <h2 class="sec"><span class="no">7.7</span>产业政策：如何挑选与扶持产业</h2>
+  <div class="sec-rule"></div>
+  <div class="def box"><span class="tag">定义</span><p><b>产业政策</b>：政府为促进特定产业或企业发展的政策措施总称，包括补贴、税收优惠、低息贷款、土地支持、政府采购、目录准入与规划引导等。</p></div>
+  <p><b>两类经济学依据</b>：其一，<b>正外部性</b>——研发与知识溢出使社会收益大于企业收益，市场自动投资不足，政府补贴可纠偏；其二，<b>协调失败</b>——一个产业需要多个互补环节同时投入（原料、设备、配套、市场），单个企业不敢先动，政府可以出面协调（类似“谁先修路”的集体行动问题）。</p>
+  <p><b>三类政策对象</b>：<b>虚假产业</b>（表面热门的伪需求）、<b>战略新兴产业</b>（正外部性强、值得扶持）、<b>复杂产业协调</b>（环节多、需要系统组织）。政策成败的关键，在于政府能否识别出后两类而不掉进第一类。</p>
+  <p><b>政策手段</b>：财政补贴、税收优惠、信贷支持（政策性银行与低息贷款）、土地与基础设施、政府采购与示范应用、行业目录与标准。近年还出现<b>链长制</b>——由地方领导担任“链长”，统筹一条产业链的招商、配套与补链强链。</p>
+  <div class="data box"><span class="tag">四种诟病</span><p>①<b>寻租</b>：补贴资格成为官员与企业的博弈对象，滋生腐败与游说；②<b>重复建设</b>：地方竞相上马同类项目，产能过剩（光伏、钢铁都曾如此）；③<b>挑选赢家困难</b>：政府掌握的信息往往不如市场；④<b>扭曲竞争</b>：保护与补贴让企业依赖政策而非市场，弱化创新动力。</p></div>
+  <div class="ex box"><span class="tag">实例 · 光伏、新能源汽车与锂电池</span><p><b>光伏</b>：早年“两头在外”（原料与市场都在国外），靠补贴做大产能后经历严重过剩与行业洗牌，最终靠技术迭代与成本优势成为全球龙头。<b>新能源汽车</b>：购置补贴＋牌照优惠＋双积分政策从需求端拉动，中国车企在电动化赛道完成换道超车。<b>锂电池</b>：依托市场需求与规模制造，培育出宁德时代等全球头部企业——支持者说这是产业政策成功的证据，反对者则提醒其中伴随的产能过剩与财政成本。</p></div>
+
+  <h2 class="sec"><span class="no">7.8</span>全球化时代的工业化</h2>
+  <div class="sec-rule"></div>
+  <p>德龙（J. Bradford DeLong）在《蹒跚前行》（<i>Slouching Towards Utopia</i>）中描绘1870–2010年：技术加速、市场扩张与制度变迁共同把人类带入工业文明的“增长大爆炸”，而中国正是在这一全球化窗口里完成追赶。</p>
+  <div class="def box"><span class="tag">定义</span><p><b>O型环理论</b>（Kremer, 1993）：最终产出取决于链条上<b>每一环节</b>的可靠性——像航天飞机上的O型密封环，一个环节失守，整个系统失败。推论：技术水平差异会通过“环节相乘”被放大，高水平经济体的每个工人都值得更好的设备与更高的工资。</p></div>
+  <div class="ex box"><span class="tag">实例 · 挑战者号</span><p>1986年“挑战者号”航天飞机升空73秒后爆炸，7名宇航员罹难。事故调查发现，罪魁是一个橡胶<b>O型环</b>在低温下失去弹性、未能密封。几百个环节都可靠，只坏一环，全盘皆输——这就是“乘积逻辑”最残酷的演示，也正是O型环理论得名的由来。</p></div>
+  <p><b>支撑现代工业化的三大力量</b>：<b>工业实验室</b>（研发进入企业内部、制度化运转，爱迪生的门罗公园实验室是标志）；<b>大型现代公司</b>（职业经理人与多层级组织把规模做到单个人无法企及的程度）；<b>全球化</b>（市场与竞争同时扩大，企业必须面向世界定价与创新）。中国晚到的工业化，恰恰赶上了这三股力量的成熟期。</p>
+
+  <h2 class="sec"><span class="no">7.9</span>结构转型与过早去工业化</h2>
+  <div class="sec-rule"></div>
+  <p><b>结构转型</b>是发展的一般规律：经济重心从农业转向工业、再转向服务业，就业随之迁移。工业化中期之后，服务业占比上升本身不是坏事——但若在人均收入尚低时就提前“去工业化”，就是<b>过早去工业化</b>。</p>
+  <div class="def box"><span class="tag">定义</span><p><b>过早去工业化</b>：一国在人均收入仍低、农业剩余劳动力尚未吸收完时，制造业就业占比就开始下降。后果：大量劳动力只能进入低生产率的城市非正规部门，增长与就业双双受困。</p></div>
+  <div class="ex box"><span class="tag">实例 · 拉美与非洲</span><p>拉美多国在1980年代债务危机后过早转向服务业主导，制造业“空心化”，大量劳动者进入街头摊贩式服务业；部分非洲国家更是“工业还没起来就衰落了”。对照之下，亚洲四小龙与中国大陆把制造业壮大的窗口尽量拉长，再逐步升级——窗口期的长短，决定了“中等收入陷阱”能否跨越。</p></div>
+  <p>另一个长期压力是<b>服务业成本病</b>（鲍莫尔病）：服务业生产率提高慢，工资却随整体水平上涨，服务价格相对上升、在GDP中占比被动扩大——即使人人都不想“去工业化”，结构本身也在变。</p>
+
+  <h2 class="sec"><span class="no">7.10</span>本章总结</h2>
+  <div class="sec-rule"></div>
+  <div class="data box"><span class="tag">小结</span><p>后发国家工业化的“处方”从理论走向中国的实践：计划期靠<b>重工业优先</b>建立了工业基础，但就业结构滞后；改革期靠<b>乡镇企业＋适宜产权</b>完成农村工业化；接着是<b>产业集群、开发区与产业政策</b>的层层递进；全球化时代则靠开放与规模把制造业推到世界级。全程呼应<b>原理5</b>（社会网络促进分工、交易和融资，降低早期工业化门槛；产业升级与全球化要求更开放的市场、更专业的中介、更稳定的规则）与<b>原理8</b>（工业化和城市化通过要素再配置提高生产率并重塑社会结构）。</p></div>
+  <div class="chnav" data-chnav></div>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -1038,7 +1195,8 @@ const CHAPTERS=[
   {id:"ch3",no:"03",name:"人口与劳动力：从无限供给到刘易斯拐点"},
   {id:"ch4",no:"04",name:"土地制度与城市化"},
   {id:"ch5",no:"05",name:"财政体制：分权与地方激励"},
-  {id:"ch6",no:"06",name:"金融改革：从抑制到深化"}
+  {id:"ch6",no:"06",name:"金融改革：从抑制到深化"},
+  {id:"ch7",no:"07",name:"工业化：从乡镇企业到产业集群"}
 ];
 
 /* ================= 路由 ================= */
@@ -1059,7 +1217,7 @@ function go(v){
   initCharts(v);
   closeSidebar();
   window.scrollTo(0,0);
-  document.title=v==="home"?"中国经济专题 · 六讲学习网站":`第${(CHAPTERS.find(c=>c.id===v)||{}).no||""}讲 ${(CHAPTERS.find(c=>c.id===v)||{}).name||""} · 中国经济专题`;
+  document.title=v==="home"?"中国经济专题 · 七讲学习网站":`第${(CHAPTERS.find(c=>c.id===v)||{}).no||""}讲 ${(CHAPTERS.find(c=>c.id===v)||{}).name||""} · 中国经济专题`;
 }
 window.addEventListener("hashchange",()=>{const h=location.hash.replace(/^#\/?/,"");go(CHAPTERS.some(c=>c.id===h)?h:"home");});
 /* 卡片点击进入章节 */
@@ -1277,6 +1435,27 @@ regChart("c6_stimulus",()=>({
     {name:"新增银行贷款",value:3,itemStyle:{color:PALETTE.vermilion}},
     {name:"其他财政资金",value:1,itemStyle:{color:PALETTE.gold}}
   ],label:{fontSize:13,color:"#3c3b33",formatter:"{b}\n{c} 万亿"},labelLine:{lineStyle:{color:"#8A8370"}}}]
+}));
+
+/* —— 第七章 —— */
+regChart("c7_dual",()=>({
+  tooltip:{trigger:"axis"},
+  legend:{data:["工业占国民收入份额(%)","农业就业占比(%)"],textStyle:{color:"#5c584d",fontSize:12},top:0},
+  grid:{left:45,right:45,top:40,bottom:28},
+  xAxis:{type:"category",data:["1952","1957","1962","1965","1970","1975","1978"],...axisOpt},
+  yAxis:[{type:"value",name:"工业份额(%)",max:60,...axisOpt},{type:"value",name:"农业就业(%)",max:90,...axisOpt}],
+  series:[
+    {name:"工业占国民收入份额(%)",type:"line",data:[19.5,28.3,32.8,36.4,41.0,46.0,49.4],smooth:true,lineStyle:{width:3,color:PALETTE.vermilion},itemStyle:{color:PALETTE.vermilion},symbolSize:8,areaStyle:{color:"rgba(168,50,31,.12)"}},
+    {name:"农业就业占比(%)",type:"line",yAxisIndex:1,data:[83.5,81.2,82.1,81.6,77.2,77.4,73.3],smooth:true,lineStyle:{width:3,color:PALETTE.gold,type:"dashed"},itemStyle:{color:PALETTE.gold},symbolSize:8}
+  ]
+}));
+regChart("c7_towns",()=>({
+  tooltip:{trigger:"item",formatter:"{b}: {c} 万家（{d}%）"},
+  legend:{bottom:0,textStyle:{color:"#5c584d",fontSize:12}},
+  series:[{type:"pie",radius:["42%","64%"],center:["50%","44%"],data:[
+    {name:"村办企业",value:112,itemStyle:{color:PALETTE.sienna}},
+    {name:"乡镇办企业",value:41,itemStyle:{color:PALETTE.gold}}
+  ],label:{fontSize:13,color:"#3c3b33",formatter:"{b}\n{c} 万家"},labelLine:{lineStyle:{color:"#8A8370"}}}]
 }));
 
 /* ================= 初始化 ================= */
